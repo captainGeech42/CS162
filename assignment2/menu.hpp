@@ -1,7 +1,9 @@
 #ifndef MENU
 #define MENU
 
-#include "pizza.h"
+#define MENU_DATA "menu.txt"
+
+#include "pizza.hpp"
 
 class Menu {
 private:

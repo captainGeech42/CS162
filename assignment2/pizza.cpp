@@ -1,4 +1,4 @@
-#include "pizza.h"
+#include "pizza.hpp"
 
 Pizza::Pizza() {
     //TBD

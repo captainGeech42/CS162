@@ -11,9 +11,13 @@ private:
     int large_cost;
     int num_ingredients;
     std::string* ingredients;
+    Pizza();
 
 public:
-    Pizza();
+    Pizza(std::string, int, int, int);
+    Pizza(std::string, int, int, int, int, std::string*);
+    ~Pizza();
+
     std::string get_name();
     void set_name(std::string);
     int get_small_cost();

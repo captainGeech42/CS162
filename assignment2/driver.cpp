@@ -1,13 +1,19 @@
 #include <stdio.h>
 #include <string>
 
-#include "pizza.h"
-#include "restaurant.h"
-#include "menu.h"
-#include "structs.h"
+#include "pizza.hpp"
+#include "restaurant.hpp"
+#include "menu.hpp"
+#include "structs.hpp"
+
+#define DEBUG
 
 int main() {
-    Pizza pizza;
+
+}
+
+int old_main() {
+    /*Pizza pizza;
     pizza.set_name("Meat Lovers");
     pizza.set_small_cost(8);
     pizza.set_medium_cost(pizza.get_small_cost()+2);
@@ -85,5 +91,5 @@ int main() {
 
     delete[] ingredients;
     delete[] week;
-    printf("[*] Memory has been freed\n");
+    printf("[*] Memory has been freed\n");*/
 }
