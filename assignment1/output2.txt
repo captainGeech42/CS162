@@ -1,0 +1,1188 @@
+-------------------------------- Largest State ---------------------------------
+The largest state is Oregon
+
+-------------------------------- Largest County --------------------------------
+The largest county is Cousins County
+
+------------- Counties with average income above a given threshold -------------
+Income Threshold: $6400
+Counties above the threshold: 
+	Benton ($100000)
+	Lane ($50000)
+	Anderson ($100000)
+	Pickens ($50000)
+	Zander ($39999)
+	Alex ($38361)
+	Fuck ($9291)
+
+-------------------- Average household cost for each state ---------------------
+Oregon: $200000
+South_Carolina: $50000
+Kansas: $44133.7
+Alabama: $1753
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+: $-nan
+
+-------------------------- Sorted data by state name ---------------------------
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+====== Alabama ======
+Population: 882999
+3 counties
+	We
+	Population: 4888
+	Average Income: $991
+	Average House Cost: $33
+	3 cities
+		Portland
+		Vegas
+		Miami
+
+	Fuck
+	Population: 899
+	Average Income: $9291
+	Average House Cost: $2344
+	4 cities
+		We
+		hate
+		Black
+		People
+
+	Cousins
+	Population: 199929
+	Average Income: $2883
+	Average House Cost: $2882
+	2 cities
+		And
+		Mexican
+
+
+====== Kansas ======
+Population: 100
+3 counties
+	Zander
+	Population: 9499
+	Average Income: $39999
+	Average House Cost: $32787
+	2 cities
+		Hawley
+		Buxton
+
+	Alex
+	Population: 69
+	Average Income: $38361
+	Average House Cost: $99182
+	3 cities
+		Oregon
+		State
+		University
+
+	Fares
+	Population: 88991
+	Average Income: $2883
+	Average House Cost: $432
+	1 cities
+		Sucks
+
+
+====== Oregon ======
+Population: 1000000
+2 counties
+	Benton
+	Population: 53000
+	Average Income: $100000
+	Average House Cost: $250000
+	1 cities
+		Corvallis
+
+	Lane
+	Population: 80000
+	Average Income: $50000
+	Average House Cost: $150000
+	2 cities
+		Eugene
+		Springfield
+
+
+====== South_Carolina ======
+Population: 19
+2 counties
+	Anderson
+	Population: 80000
+	Average Income: $100000
+	Average House Cost: $80000
+	2 cities
+		Anderson
+		Pendleton
+
+	Pickens
+	Population: 50000
+	Average Income: $50000
+	Average House Cost: $20000
+	2 cities
+		Clemson
+		Pickens
+
+
+
+----------------------- Sorted data by state population ------------------------
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+====== South_Carolina ======
+Population: 19
+2 counties
+	Anderson
+	Population: 80000
+	Average Income: $100000
+	Average House Cost: $80000
+	2 cities
+		Anderson
+		Pendleton
+
+	Pickens
+	Population: 50000
+	Average Income: $50000
+	Average House Cost: $20000
+	2 cities
+		Clemson
+		Pickens
+
+
+====== Kansas ======
+Population: 100
+3 counties
+	Zander
+	Population: 9499
+	Average Income: $39999
+	Average House Cost: $32787
+	2 cities
+		Hawley
+		Buxton
+
+	Alex
+	Population: 69
+	Average Income: $38361
+	Average House Cost: $99182
+	3 cities
+		Oregon
+		State
+		University
+
+	Fares
+	Population: 88991
+	Average Income: $2883
+	Average House Cost: $432
+	1 cities
+		Sucks
+
+
+====== Alabama ======
+Population: 882999
+3 counties
+	We
+	Population: 4888
+	Average Income: $991
+	Average House Cost: $33
+	3 cities
+		Portland
+		Vegas
+		Miami
+
+	Fuck
+	Population: 899
+	Average Income: $9291
+	Average House Cost: $2344
+	4 cities
+		We
+		hate
+		Black
+		People
+
+	Cousins
+	Population: 199929
+	Average Income: $2883
+	Average House Cost: $2882
+	2 cities
+		And
+		Mexican
+
+
+====== Oregon ======
+Population: 1000000
+2 counties
+	Benton
+	Population: 53000
+	Average Income: $100000
+	Average House Cost: $250000
+	1 cities
+		Corvallis
+
+	Lane
+	Population: 80000
+	Average Income: $50000
+	Average House Cost: $150000
+	2 cities
+		Eugene
+		Springfield
+
+
+
+--------------------- Sorted each state's counties by name ---------------------
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+====== South_Carolina ======
+Population: 19
+2 counties
+	Anderson
+	Population: 80000
+	Average Income: $100000
+	Average House Cost: $80000
+	2 cities
+		Anderson
+		Pendleton
+
+	Pickens
+	Population: 50000
+	Average Income: $50000
+	Average House Cost: $20000
+	2 cities
+		Clemson
+		Pickens
+
+
+====== Kansas ======
+Population: 100
+3 counties
+	Alex
+	Population: 69
+	Average Income: $38361
+	Average House Cost: $99182
+	3 cities
+		Oregon
+		State
+		University
+
+	Fares
+	Population: 88991
+	Average Income: $2883
+	Average House Cost: $432
+	1 cities
+		Sucks
+
+	Zander
+	Population: 9499
+	Average Income: $39999
+	Average House Cost: $32787
+	2 cities
+		Hawley
+		Buxton
+
+
+====== Alabama ======
+Population: 882999
+3 counties
+	Cousins
+	Population: 199929
+	Average Income: $2883
+	Average House Cost: $2882
+	2 cities
+		And
+		Mexican
+
+	Fuck
+	Population: 899
+	Average Income: $9291
+	Average House Cost: $2344
+	4 cities
+		We
+		hate
+		Black
+		People
+
+	We
+	Population: 4888
+	Average Income: $991
+	Average House Cost: $33
+	3 cities
+		Portland
+		Vegas
+		Miami
+
+
+====== Oregon ======
+Population: 1000000
+2 counties
+	Benton
+	Population: 53000
+	Average Income: $100000
+	Average House Cost: $250000
+	1 cities
+		Corvallis
+
+	Lane
+	Population: 80000
+	Average Income: $50000
+	Average House Cost: $150000
+	2 cities
+		Eugene
+		Springfield
+
+
+
+------------------ Sorted each state's counties by population ------------------
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+======  ======
+Population: 0
+0 counties
+
+====== South_Carolina ======
+Population: 19
+2 counties
+	Pickens
+	Population: 50000
+	Average Income: $50000
+	Average House Cost: $20000
+	2 cities
+		Clemson
+		Pickens
+
+	Anderson
+	Population: 80000
+	Average Income: $100000
+	Average House Cost: $80000
+	2 cities
+		Anderson
+		Pendleton
+
+
+====== Kansas ======
+Population: 100
+3 counties
+	Alex
+	Population: 69
+	Average Income: $38361
+	Average House Cost: $99182
+	3 cities
+		Oregon
+		State
+		University
+
+	Zander
+	Population: 9499
+	Average Income: $39999
+	Average House Cost: $32787
+	2 cities
+		Hawley
+		Buxton
+
+	Fares
+	Population: 88991
+	Average Income: $2883
+	Average House Cost: $432
+	1 cities
+		Sucks
+
+
+====== Alabama ======
+Population: 882999
+3 counties
+	Fuck
+	Population: 899
+	Average Income: $9291
+	Average House Cost: $2344
+	4 cities
+		We
+		hate
+		Black
+		People
+
+	We
+	Population: 4888
+	Average Income: $991
+	Average House Cost: $33
+	3 cities
+		Portland
+		Vegas
+		Miami
+
+	Cousins
+	Population: 199929
+	Average Income: $2883
+	Average House Cost: $2882
+	2 cities
+		And
+		Mexican
+
+
+====== Oregon ======
+Population: 1000000
+2 counties
+	Benton
+	Population: 53000
+	Average Income: $100000
+	Average House Cost: $250000
+	1 cities
+		Corvallis
+
+	Lane
+	Population: 80000
+	Average Income: $50000
+	Average House Cost: $150000
+	2 cities
+		Eugene
+		Springfield
+
+
+
