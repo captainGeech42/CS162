@@ -2,11 +2,19 @@
 #define RESTAURANT
 
 #include <string>
+#include <fstream>
+#include <stdio.h>
 
 #include "menu.hpp"
 #include "pizza.hpp"
 #include "order_manager.hpp"
 #include "structs.hpp"
+
+#ifdef MAKE
+#include "helper.hpp"
+#else
+#include "O:\cpphelper\helper.hpp"
+#endif
 
 #define EMPLOYEE_DATA "employee.txt"
 #define RESTAURANT_DATA "restaurant_info.txt"
@@ -26,7 +34,8 @@ private:
 public:
     Restaurant();
     ~Restaurant();
-    // copy constructor
+    const Restaurant& operator=(const Restaurant&);
+    Restaurant(const Restaurant&);
 
     void load_data();
     bool login(std::string, std::string);
@@ -43,20 +52,20 @@ public:
     void remove_orders();
 
     /*** getters and setters ***/
-    // Menu get_menu();
-    // void set_menu(Menu);
-    // employee* get_employees();
-    // void set_employees(employee*);
-    // int get_num_employees();
-    // void set_num_employees(int);
-    // hours* get_week();
-    // void set_week(hours*);
-    // std::string get_name();
-    // void set_name(std::string);
-    // std::string get_phone();
-    // void set_phone(std::string);
-    // std::string get_address();
-    // void set_address(std::string);
+    Menu get_menu();
+    void set_menu(Menu);
+    employee* get_employees();
+    void set_employees(employee*);
+    int get_num_employees();
+    void set_num_employees(int);
+    hours* get_week();
+    void set_week(hours*);
+    std::string get_name();
+    void set_name(std::string);
+    std::string get_phone();
+    void set_phone(std::string);
+    std::string get_address();
+    void set_address(std::string);
 };
 
 #endif

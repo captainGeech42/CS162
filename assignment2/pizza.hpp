@@ -2,6 +2,7 @@
 #define PIZZA
 
 #include <string>
+#include <stdio.h>
 
 class Pizza {
 private:
@@ -11,25 +12,25 @@ private:
     int large_cost;
     int num_ingredients;
     std::string* ingredients;
-    Pizza();
 
 public:
+    Pizza();
     Pizza(std::string, int, int, int);
     Pizza(std::string, int, int, int, int, std::string*);
     ~Pizza();
+    Pizza(const Pizza&);
+    const Pizza& operator=(const Pizza&);
 
-    std::string get_name();
+    std::string get_name() const;
     void set_name(std::string);
-    int get_small_cost();
+    int get_small_cost() const;
     void set_small_cost(int);
-    int get_medium_cost();
+    int get_medium_cost() const;
     void set_medium_cost(int);
-    int get_large_cost();
+    int get_large_cost() const;
     void set_large_cost(int);
-    int get_num_ingredients();
-    void set_num_ingredients(int);
-    std::string* get_ingredients();
-    void set_ingredients(std::string*);
+    int get_num_ingredients() const;
+    std::string* get_ingredients() const;
 };
 
 #endif

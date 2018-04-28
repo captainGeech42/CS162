@@ -13,6 +13,8 @@ private:
 public:
     OrderManager();
     ~OrderManager();
+    OrderManager(const OrderManager&);
+    const OrderManager& operator=(const OrderManager&);
 
     void add_order(order*);
     void remove_order(int);

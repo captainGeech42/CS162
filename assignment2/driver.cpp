@@ -8,12 +8,16 @@
 
 #define DEBUG
 
+// void old_main();
+
 int main() {
 
+    return 0;
 }
 
-int old_main() {
-    /*Pizza pizza;
+/*
+void old_main() {
+    Pizza pizza;
     pizza.set_name("Meat Lovers");
     pizza.set_small_cost(8);
     pizza.set_medium_cost(pizza.get_small_cost()+2);
@@ -35,7 +39,9 @@ int old_main() {
 
     Menu menu;
     menu.set_num_pizzas(1);
-    menu.set_pizzas(&pizza);
+    Pizza* pizzas = new Pizza[1];
+    pizzas[0] = pizza;
+    menu.set_pizzas(pizzas);
 
     printf("[*] Menu has been made\n");
     printf("Pizzas: %d\n", menu.get_num_pizzas());
@@ -43,12 +49,12 @@ int old_main() {
 
     Restaurant restaurant;
     restaurant.set_menu(menu);
-    employee emp;
-    emp.id = "1";
-    emp.first_name = "John";
-    emp.last_name = "Doe";
-    emp.password = "myvoiceismypassport";
-    restaurant.set_employees(&emp);
+    employee* emp = new employee[1];
+    emp->id = "1";
+    emp->first_name = "John";
+    emp->last_name = "Doe";
+    emp->password = "myvoiceismypassport";
+    restaurant.set_employees(emp);
     hours* week = new hours[7];
     for (int i = 0; i < 7; i++) {
         switch (i) {
@@ -88,8 +94,4 @@ int old_main() {
     printf("Name: %s\n", restaurant.get_name().c_str());
     printf("Phone #: %s\n", restaurant.get_phone().c_str());
     printf("Address: %s\n", restaurant.get_address().c_str());
-
-    delete[] ingredients;
-    delete[] week;
-    printf("[*] Memory has been freed\n");*/
-}
+}*/
