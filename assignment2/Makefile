@@ -29,4 +29,4 @@ clean:
 	$(RM) pizza.o menu.o restaurant.o driver.o order_manager.o *.out $(exe) *.gch peda*
 
 compress:
-	tar zcvf assign2.tar.gz pizza.hpp pizza.cpp menu.hpp menu.cpp restaurant.hpp restaurant.cpp Makefile helper.hpp helper.o
+	tar zcvf assign2.tar.gz Makefile helper.* menu.?pp order_manager.?pp pizza.?pp restaurant.?pp structs.hpp driver.cpp
