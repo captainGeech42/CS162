@@ -4,9 +4,8 @@
 #include "pizza.hpp"
 #include "restaurant.hpp"
 #include "menu.hpp"
+#include "order_manager.hpp"
 #include "structs.hpp"
-
-#define DEBUG
 
 // void old_main();
 

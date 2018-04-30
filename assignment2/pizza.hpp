@@ -3,6 +3,17 @@
 
 #include <string>
 #include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+
+#include "structs.hpp"
+
+#ifdef MAKE
+#include "helper.hpp"
+#else
+#include "O:\cpphelper\helper.hpp"
+#endif
+
 
 class Pizza {
 private:
@@ -16,10 +27,13 @@ private:
 public:
     Pizza();
     Pizza(std::string, int, int, int);
-    Pizza(std::string, int, int, int, int, std::string*);
     ~Pizza();
     Pizza(const Pizza&);
     const Pizza& operator=(const Pizza&);
+
+    static Size get_size();
+    static Size parse_size(std::string);
+    void add_ingredient(std::string);
 
     std::string get_name() const;
     void set_name(std::string);

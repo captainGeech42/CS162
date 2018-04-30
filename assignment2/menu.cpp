@@ -33,12 +33,12 @@ const Menu& Menu::operator=(const Menu& copy) {
 int Menu::get_num_pizzas() const { return this->num_pizzas; }
 Pizza* Menu::get_pizzas() const { return this->pizzas; }
 
-Menu Menu::search_pizza_by_cost(int upper_bound, std::string size) {
+Menu Menu::search_pizza_by_cost(int upper_bound, Size size) {
     Menu res;
     for (int i = 0; i < this->num_pizzas; i++) {
-        if (strcmpnc(size, "s")) {
+        if (size == kSmall) {
             if (this->pizzas[i].get_small_cost() < upper_bound) res.add_to_menu(this->pizzas[i]);
-        } else if (strcmpnc(size, "m")) {
+        } else if (size == kMedium) {
             if (this->pizzas[i].get_medium_cost() < upper_bound) res.add_to_menu(this->pizzas[i]);
         } else {
             if (this->pizzas[i].get_large_cost() < upper_bound) res.add_to_menu(this->pizzas[i]);
@@ -94,4 +94,62 @@ void Menu::remove_from_menu(std::string name) {
     }
     delete[] this->pizzas;
     this->pizzas = new_arr;
+}
+
+void Menu::print() {
+    std::cout << "Name\tS/M/L\tIngredients";
+    std::cout << std::string('-', 25);
+    for (int i = 0; i < this->num_pizzas; i++) {
+        printf("%s\t$%d/$%d/$%d\t", this->pizzas[i].get_name().c_str(), this->pizzas[i].get_small_cost(), this->pizzas[i].get_medium_cost(), this->pizzas[i].get_large_cost());
+        for (int j = 0; j < this->pizzas[i].get_num_ingredients(); j++) {
+            std::cout << this->pizzas[i].get_ingredients()[j];
+            if (j != this->pizzas[i].get_num_ingredients()-1) {
+                std::cout << ", ";
+            } else {
+                std::cout << std::endl;
+            }
+        }
+    }
+}
+
+bool Menu::contains_pizza(std::string name) {
+    for (int i = 0; i < this->num_pizzas; i++) {
+        if (this->pizzas[i].get_name() == name) return true;
+    }
+    return false;
+}
+
+void Menu::load_from_file() {
+    if (!is_file_empty(MENU_DATA)) {
+        std::ifstream file;
+        file.open(MENU_DATA);
+
+        std::string line;
+        int lines = 0;
+        while (!file.eof()) {
+            lines++;
+            getline(file, line);
+        }
+
+        std::string name, temp;
+        int small, medium, large, num_ingredients;
+        for (int i = 0; i < lines; i++) {
+            file >> name;
+            file >> small;
+            file >> medium;
+            file >> large;
+            file >> num_ingredients;
+
+            Pizza pizza(name, small, medium, large);
+
+            for (int j = 0; j < num_ingredients; j++) {
+                file >> temp;
+                pizza.add_ingredient(temp);
+            }
+
+            this->add_to_menu(pizza);
+        }
+
+        file.close();
+    }
 }

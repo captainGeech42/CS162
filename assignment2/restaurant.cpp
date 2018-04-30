@@ -12,21 +12,21 @@ Restaurant::Restaurant() {
 
 Restaurant::~Restaurant() {
     if (this->employees != NULL) delete[] this->employees;
-    if (this->employees != NULL) delete[] this->week;
+    if (this->week != NULL) delete[] this->week;
 }
 
 Restaurant::Restaurant(const Restaurant& copy) {
     this->menu = copy.menu;
     this->num_employees = copy.num_employees;
     if (this->num_employees > 0) {
-        this->employees = new employee[this->num_employees];
+        this->employees = new Employee[this->num_employees];
         for (int i = 0; i < this->num_employees; i++) {
             this->employees[i] = copy.employees[i];
         }
     }
     this->days_open = copy.days_open;
     if (this->days_open > 0) {
-        this->week = new hours[this->days_open];
+        this->week = new Hours[this->days_open];
         for (int i = 0; i < this->days_open; i++) {
             this->week[i] = copy.week[i];
         }
@@ -41,14 +41,14 @@ const Restaurant& Restaurant::operator=(const Restaurant& copy) {
     this->menu = copy.menu;
     this->num_employees = copy.num_employees;
     if (this->num_employees > 0) {
-        this->employees = new employee[this->num_employees];
+        this->employees = new Employee[this->num_employees];
         for (int i = 0; i < this->num_employees; i++) {
             this->employees[i] = copy.employees[i];
         }
     }
     this->days_open = copy.days_open;
     if (this->days_open > 0) {
-        this->week = new hours[this->days_open];
+        this->week = new Hours[this->days_open];
         for (int i = 0; i < this->days_open; i++) {
             this->week[i] = copy.week[i];
         }
@@ -58,6 +58,50 @@ const Restaurant& Restaurant::operator=(const Restaurant& copy) {
     this->address = copy.address;
     this->order_manager = copy.order_manager;
     return *this;
+}
+
+void Restaurant::order_from_menu() { this->order_from_menu(this->menu); }
+
+void Restaurant::order_from_menu(Menu menu) {
+    std::string name, credit_card, address, phone_number;
+
+    std::cout << "Please enter your name: ";
+    getline(std::cin, name);
+
+    std::cout << "Please enter your credit card number: ";
+    getline(std::cin, credit_card);
+        
+    std::cout << "Please enter your address: ";
+    getline(std::cin, address);
+
+    std::cout << "Please enter your phone number: ";
+    getline(std::cin, phone_number);
+
+    int order_index = this->order_manager.create_order(name, credit_card, address, phone_number);
+
+    std::string pizza_name;
+    bool name_good = true;
+    int quantity;
+    Size size;
+    do {
+        do {
+            if (!name_good) {
+                printf("Invalid pizza name received\n");
+                name_good = true;
+            }
+
+            std::cout << "Please enter your pizza name: ";
+            getline(std::cin, pizza_name);
+
+            name_good = menu.contains_pizza(pizza_name);
+        } while (!name_good);
+
+        quantity = get_int("Please enter your desired quantity: ");
+
+        size = Pizza::get_size();
+
+        this->order_manager.add_pizza_to_order(order_index, pizza_name, quantity, size);
+    } while (get_yes_no("Would you like to order another pizza?"));
 }
 
 void Restaurant::load_data() {
@@ -83,7 +127,7 @@ void Restaurant::load_data() {
                 break;
             case 3:
                 this->days_open = parse_int(line);
-                this->week = new hours[this->days_open];
+                this->week = new Hours[this->days_open];
                 for (int i = 0; i < this->days_open; i++) {
                     file >> this->week[i].day;
                     file >> this->week[i].open_hour;
@@ -93,76 +137,163 @@ void Restaurant::load_data() {
                 break;
         }
     }
+    file.close();
 
-    // read in
-}
-/*
-bool Restaurant::login(std::string, std::string);
-void Restaurant::view_menu();
-void Restaurant::view_hours();
-void Restaurant::view_address();
-void Restaurant::view_phone();
-void Restaurant::search_menu_by_price();
-void Restaurant::place_order(Pizza* selection);
-void Restaurant::change_hours();
-void Restaurant::add_to_menu();
-void Restaurant::remove_from_menu();
-void Restaurant::view_orders();
-void Restaurant::remove_orders();
-*/
+    // read in employee data
+    file.open(EMPLOYEE_DATA);
+    int lines = 0;
+    while (!file.eof()) {
+        lines++;
+        getline(file, line);
+    }
+    file.close();
+    this->num_employees = lines;
+    this->employees = new Employee[this->num_employees];
+    file.open(EMPLOYEE_DATA);
+    for (int i = 0; i < this->num_employees; i++) {
+        file >> this->employees[i].id;
+        file >> this->employees[i].first_name;
+        file >> this->employees[i].last_name;
+        file >> this->employees[i].password;
+    }
+    file.close();
 
-Menu Restaurant::get_menu() {
-    return this->menu;
-}
+    // read in menu data
+    this->menu.load_from_file();
 
-void Restaurant::set_menu(Menu menu) {
-    this->menu = menu;
-}
-
-employee* Restaurant::get_employees() {
-    return this->employees;
+    // read in order data
+    this->order_manager.load_from_file();
 }
 
-void Restaurant::set_employees(employee* employees) {
-    this->employees = employees;
+bool Restaurant::valid_login(std::string id, std::string password) {
+    for (int i = 0; i < this->num_employees; i++) {
+        if (this->employees[i].id == id) {
+            if (this->employees[i].password == password) {
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
 }
 
-int Restaurant::get_num_employees() {
-    return this->num_employees;
+void Restaurant::view_menu() {
+    this->menu.print();
 }
 
-void Restaurant::set_num_employees(int num_employees) {
-    this->num_employees = num_employees;
+void Restaurant::view_hours() {
+    std::cout << "Num\tDay\tOpen\tClose" << std::endl;
+    for (int i = 0; i < this->days_open; i++) {
+        printf("%d\t%s\t%s\t%s\n", i, this->week[i].day.c_str(), this->week[i].open_hour.c_str(), this->week[i].close_hour.c_str());
+    }
 }
 
-hours* Restaurant::get_week() {
-    return this->week;
+void Restaurant::view_address() {
+    std::cout << this->address << std::endl;
 }
 
-void Restaurant::set_week(hours* week) {
-    this->week = week;
+void Restaurant::view_phone() {
+    std::cout << this->phone << std::endl;
 }
 
-std::string Restaurant::get_name() {
-    return this->name;
+void Restaurant::search_menu_by_price() {
+    int price;
+    do {
+        price = get_int("Please enter your maximum price");
+    } while (price < 0);
+
+    Menu res = this->menu.search_pizza_by_cost(price, Pizza::get_size());
+
+    std::cout << "Here are the pizzas we found:" << std::endl;
+    res.print();
+
+    if (get_yes_no("Would you like you to place an order off this search result?")) {
+        this->order_from_menu(res);
+    }
 }
 
-void Restaurant::set_name(std::string name) {
-    this->name = name;
+void Restaurant::place_order() {
+    this->order_from_menu();
 }
 
-std::string Restaurant::get_phone() {
-    return this->phone;
+void Restaurant::change_hours() {
+    int day;
+    do {
+        day = get_int("Please enter day #: ");
+    } while (day < 0 || day > this->days_open-1);
+
+    std::cout << "Please enter new open hour: " << std::endl;
+    getline(std::cin, this->week[day].open_hour);
+    
+    std::cout << "Please enter new close hour: " << std::endl;
+    getline(std::cin, this->week[day].close_hour);
 }
 
-void Restaurant::set_phone(std::string phone) {
-    this->phone = phone;
+void Restaurant::add_to_menu() {
+    std::string name;
+    int small, medium, large;
+
+    std::cout << "Please enter the pizza name: ";
+    getline(std::cin, name);
+
+    do {
+        small = get_int("Please enter the small cost: ");
+    } while (small < 0);
+
+    do {
+        medium = get_int("Please enter the medium cost: ");
+    } while (medium < 0);
+
+    do {
+        large = get_int("Please enter the large cost: ");
+    } while (large < 0);
+
+    Pizza pizza(name, small, medium, large);
+
+    std::string ingredient;
+    do {
+        std::cout << "Please enter an ingredient: ";
+        getline(std::cin, ingredient);
+
+        pizza.add_ingredient(ingredient);
+    } while (get_yes_no("Would you like to add another ingredient?"));
+
+    menu.add_to_menu(pizza);
 }
 
-std::string Restaurant::get_address() {
-    return this->address;
+void Restaurant::remove_from_menu() {
+    std::string pizza;
+    do {
+        std::cout << "Please enter the name of the pizza you wish to remove: ";
+        getline(std::cin, pizza);
+    } while (!menu.contains_pizza(pizza));
+
+    menu.remove_from_menu(pizza);
 }
 
-void Restaurant::set_address(std::string address) {
-    this->address = address;
+void Restaurant::view_orders() {
+    this->order_manager.print();
 }
+
+void Restaurant::remove_orders() {
+    int order_num;
+    do {
+        order_num = get_int("Please enter the order number you wish to remove: ");
+    } while (!this->order_manager.order_exists(order_num));
+
+    this->order_manager.remove_order(order_num);
+}
+
+Menu Restaurant::get_menu() const { return this->menu; }
+
+Employee* Restaurant::get_employees() const { return this->employees; }
+
+int Restaurant::get_num_employees() const { return this->num_employees; }
+
+Hours* Restaurant::get_week() const { return this->week; }
+
+std::string Restaurant::get_name() const { return this->name; }
+
+std::string Restaurant::get_phone() const { return this->phone; }
+
+std::string Restaurant::get_address() const { return this->address; }
