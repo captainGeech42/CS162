@@ -35,6 +35,7 @@ public:
     bool order_exists(int);
     void print();
     void load_from_file();
+    void serialize();
 };
 
 #endif

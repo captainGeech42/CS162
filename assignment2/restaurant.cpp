@@ -213,7 +213,34 @@ void Restaurant::search_menu_by_price() {
 }
 
 void Restaurant::search_menu_by_ingredients() {
-    
+    int op;
+    do {
+        op = get_int("Would you like to include (1) or exclude (2)? ");
+    } while (op < 1 || op > 2);
+
+    std::string* ingredients = new std::string[20];
+    int num_ingredients = 0;
+    do {
+        std::cout << "Please enter the ingredient you would like to search with: ";
+        getline(std::cin, ingredients[num_ingredients++]);
+    } while (get_yes_no("Would you like to add another ingredient? "));
+
+    Menu res;
+    switch (op) {
+        case 1: //include
+            res = this->menu.search_by_ingredients_to_include(ingredients, num_ingredients);
+            break;
+        case 2:
+            res = this->menu.search_by_ingredients_to_exclude(ingredients, num_ingredients);
+            break;
+    }
+
+    std::cout << "Here are the pizzas we found: " << std::endl;
+    res.print();
+
+    if (get_yes_no("Would you like to place an order off of this menu? ")) {
+        order_from_menu(res);
+    }
 }
 
 void Restaurant::place_order() {
@@ -286,6 +313,26 @@ void Restaurant::remove_orders() {
     } while (!this->order_manager.order_exists(order_num));
 
     this->order_manager.remove_order(order_num);
+}
+
+void Restaurant::serialize() {
+    std::ofstream file;
+    file.open(RESTAURANT_DATA);
+    file << this->name << std::endl;
+    file << this->phone << std::endl;
+    file << this->address << std::endl;
+    file << this->num_employees << std::endl;
+    for (int i = 0; i < this->num_employees; i++) {
+        file << this->week[i].day << " " << this->week[i].open_hour << " " << this->week[i].close_hour << std::endl;
+    }
+    file.flush();
+    file.close();
+}
+
+void Restaurant::write_all_to_file() {
+    this->serialize();
+    this->menu.serialize();
+    this->order_manager.serialize();
 }
 
 Menu Restaurant::get_menu() const { return this->menu; }

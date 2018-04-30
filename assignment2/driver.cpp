@@ -18,7 +18,7 @@ int main() {
 
     bool continue_mode;
     int op;
-    std::string in, id, password;
+    std::string id, password;
 
     while (true) {
         switch (mMode) {
@@ -83,6 +83,7 @@ int main() {
                             cMode = kCGetOperation;
                             break;
                         case kCLogOut:
+                            restaurant.write_all_to_file();
                             continue_mode = false;
                             cMode = kCGetOperation;
                             break;
@@ -160,6 +161,7 @@ int main() {
                             eMode = kEGetOperation;
                             break;
                         case kELogOut:
+                            restaurant.write_all_to_file();
                             continue_mode = false;
                             eMode = kEAuthenticate;
                             break;

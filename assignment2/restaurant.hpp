@@ -33,6 +33,7 @@ private:
 
     void order_from_menu();
     void order_from_menu(Menu);
+    void serialize();
 
 public:
     Restaurant();
@@ -54,6 +55,7 @@ public:
     void remove_from_menu();
     void view_orders();
     void remove_orders();
+    void write_all_to_file();
     
 
     /*** getters and setters ***/

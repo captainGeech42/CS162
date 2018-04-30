@@ -157,3 +157,17 @@ void Menu::load_from_file() {
         file.close();
     }
 }
+
+void Menu::serialize() {
+    std::ofstream file;
+    file.open(MENU_DATA);
+    for (int i = 0; i < this->num_pizzas; i++) {
+        file << this->pizzas[i].get_name() << " " << this->pizzas[i].get_small_cost() << " " << this->pizzas[i].get_medium_cost() << " " << this->pizzas[i].get_large_cost() << " " << this->pizzas[i].get_num_ingredients();
+        for (int j = 0; j < this->pizzas[i].get_num_ingredients(); j++) {
+            file << " " << this->pizzas[i].get_ingredients()[j];
+        }
+        file << std::endl;
+    }
+    file.flush();
+    file.close();
+}

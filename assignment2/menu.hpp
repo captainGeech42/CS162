@@ -33,6 +33,7 @@ public:
     void print();
     bool contains_pizza(std::string);
     void load_from_file();
+    void serialize();
 };
 
 #endif

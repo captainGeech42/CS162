@@ -185,3 +185,17 @@ void OrderManager::load_from_file() {
         }
     }    
 }
+
+void OrderManager::serialize() {
+    std::ofstream file;
+    file.open(ORDER_DATA);
+    for (int i = 0; i < this->num_orders; I++) {
+        file << this->orders[i].order_num << " " << this->orders[i].customer_name << " " << this->orders[i].credit_card << " " << this->orders[i].address << " " << this->orders[i].phone_number;
+        for (int j = 0; j < this->orders[i].num_distinct_pizzas; j++) {
+            file << " " << this->orders[i].pizzas[j].name << " " << this->orders[i].pizzas[j].size << " " << this->orders[i].pizzas[j].quantity;
+        }
+        file << std::endl;
+    }
+    file.flush();
+    file.close();
+}
