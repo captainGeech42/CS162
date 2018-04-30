@@ -1,11 +1,7 @@
 Bytes Pizza
 555 454 6736
 151 Somewhere St.
-7
+3
 S 12 5
 M 10 9
 T 10 9
-W 10 9
-R 10 9
-F 10 11
-S 10 11

@@ -235,11 +235,18 @@ void Restaurant::search_menu_by_ingredients() {
             break;
     }
 
-    std::cout << "Here are the pizzas we found: " << std::endl;
-    res.print();
+    delete[] ingredients;
 
-    if (get_yes_no("Would you like to place an order off of this menu? ")) {
-        order_from_menu(res);
+    if (res.get_num_pizzas() > 0) {
+        std::cout << "Here are the pizzas we found: " << std::endl;
+        res.print();
+
+        if (get_yes_no("Would you like to place an order off of this menu? ")) {
+            order_from_menu(res);
+        }
+    } else {
+        std::cout << "We didn't find any pizzas that match those criteria" << std::endl;
+        return;
     }
 }
 
