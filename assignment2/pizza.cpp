@@ -85,7 +85,7 @@ Size Pizza::parse_size(std::string size) {
     else if (strcmpnc(size, "m")) return kMedium;
     else if (strcmpnc(size, "l")) return kLarge;
 
-    printf("invalid size when parsing from string \"%s\"", size.c_str());
+    printf("invalid size when parsing from string \"%s\"\n", size.c_str());
     exit(1);
 }
 
@@ -96,7 +96,7 @@ void Pizza::add_ingredient(std::string ingredient) {
         new_arr[i] = this->ingredients[i];
     }
     new_arr[this->num_ingredients-1] = ingredient;
-    delete[] this->ingredients;
+    if (this->ingredients != NULL) delete[] this->ingredients;
     this->ingredients = new_arr;
 }
 

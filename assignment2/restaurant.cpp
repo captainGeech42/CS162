@@ -212,6 +212,10 @@ void Restaurant::search_menu_by_price() {
     }
 }
 
+void Restaurant::search_menu_by_ingredients() {
+    
+}
+
 void Restaurant::place_order() {
     this->order_from_menu();
 }

@@ -74,7 +74,7 @@ void Menu::add_to_menu(Pizza pizza_to_add) {
         new_arr[i] = this->pizzas[i];
     }
     new_arr[this->num_pizzas-1] = pizza_to_add;
-    delete[] this->pizzas;
+    if (this->pizzas != NULL) delete[] this->pizzas;
     this->pizzas = new_arr;
 }
 
@@ -92,12 +92,12 @@ void Menu::remove_from_menu(std::string name) {
             counter++;
         }
     }
-    delete[] this->pizzas;
+    if (this->pizzas != NULL) delete[] this->pizzas;
     this->pizzas = new_arr;
 }
 
 void Menu::print() {
-    std::cout << "Name\tS/M/L\tIngredients";
+    std::cout << "Name\tS/M/L\tIngredients" << std::endl;
     std::cout << std::string('-', 25);
     for (int i = 0; i < this->num_pizzas; i++) {
         printf("%s\t$%d/$%d/$%d\t", this->pizzas[i].get_name().c_str(), this->pizzas[i].get_small_cost(), this->pizzas[i].get_medium_cost(), this->pizzas[i].get_large_cost());
@@ -110,6 +110,7 @@ void Menu::print() {
             }
         }
     }
+    std::cout << std::endl;
 }
 
 bool Menu::contains_pizza(std::string name) {
@@ -130,6 +131,9 @@ void Menu::load_from_file() {
             lines++;
             getline(file, line);
         }
+
+        file.close();
+        file.open(MENU_DATA);
 
         std::string name, temp;
         int small, medium, large, num_ingredients;

@@ -47,12 +47,14 @@ public:
     void view_address();
     void view_phone();
     void search_menu_by_price();
+    void search_menu_by_ingredients();
     void place_order();
     void change_hours();
     void add_to_menu();
     void remove_from_menu();
     void view_orders();
     void remove_orders();
+    
 
     /*** getters and setters ***/
     Menu get_menu() const;

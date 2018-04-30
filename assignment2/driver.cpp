@@ -1,5 +1,7 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <string>
+#include <iostream>
 
 #include "pizza.hpp"
 #include "restaurant.hpp"
@@ -7,90 +9,166 @@
 #include "order_manager.hpp"
 #include "structs.hpp"
 
-// void old_main();
-
 int main() {
-
-    return 0;
-}
-
-/*
-void old_main() {
-    Pizza pizza;
-    pizza.set_name("Meat Lovers");
-    pizza.set_small_cost(8);
-    pizza.set_medium_cost(pizza.get_small_cost()+2);
-    pizza.set_large_cost(pizza.get_medium_cost()+2);
-    int num_ingredients = 4;
-    std::string* ingredients = new std::string[num_ingredients];
-    ingredients[0] = "Cheese";
-    ingredients[1] = "Sausage";
-    ingredients[2] = "Pepperonni";
-    ingredients[3] = "Canadian Bacon";
-    pizza.set_num_ingredients(num_ingredients);
-    pizza.set_ingredients(ingredients);
-
-    printf("[*] Pizza has been made\n");
-    printf("Pizza name: %s\n", pizza.get_name().c_str());
-    printf("Pizza costs (S, M, L): %d, %d, %d\n", pizza.get_small_cost(), pizza.get_medium_cost(), pizza.get_large_cost());
-    printf("Ingredients: %d\n", pizza.get_num_ingredients());
-    printf("Ingredient @ 0: %s\n", pizza.get_ingredients()[0].c_str());
-
-    Menu menu;
-    menu.set_num_pizzas(1);
-    Pizza* pizzas = new Pizza[1];
-    pizzas[0] = pizza;
-    menu.set_pizzas(pizzas);
-
-    printf("[*] Menu has been made\n");
-    printf("Pizzas: %d\n", menu.get_num_pizzas());
-    printf("Pizza @ 0: %s\n", menu.get_pizzas()->get_name().c_str());
+    MainMode mMode = kInitialize;
+    CustomerMode cMode = kCGetOperation;
+    EmployeeMode eMode = kEAuthenticate;
 
     Restaurant restaurant;
-    restaurant.set_menu(menu);
-    employee* emp = new employee[1];
-    emp->id = "1";
-    emp->first_name = "John";
-    emp->last_name = "Doe";
-    emp->password = "myvoiceismypassport";
-    restaurant.set_employees(emp);
-    hours* week = new hours[7];
-    for (int i = 0; i < 7; i++) {
-        switch (i) {
-            case 0:
-            week[i].day = "M";
-            break;
-            case 1:
-            week[i].day = "T";
-            break;
-            case 2:
-            week[i].day = "W";
-            break;
-            case 3:
-            week[i].day = "R";
-            break;
-            case 4:
-            week[i].day = "F";
-            break;
-            case 5:
-            week[i].day = "S";
-            break;
-            case 6:
-            week[i].day = "U";
-            break;
-        }
-        week[i].open_hour = "10:00";
-        week[i].close_hour = "23:00";
-    }
-    restaurant.set_week(week);
-    restaurant.set_name("Test Pizza Shop");
-    restaurant.set_phone("555-555-1234");
-    restaurant.set_address("1 Pizza Lane");
 
-    printf("[*] Restaurant has been made\n");
-    printf("Employee @ 0: %s\n", restaurant.get_employees()->first_name.c_str());
-    printf("Opening hour @ 0: %s\n", restaurant.get_week()->open_hour.c_str());
-    printf("Name: %s\n", restaurant.get_name().c_str());
-    printf("Phone #: %s\n", restaurant.get_phone().c_str());
-    printf("Address: %s\n", restaurant.get_address().c_str());
-}*/
+    bool continue_mode;
+    int op;
+    std::string in, id, password;
+
+    while (true) {
+        switch (mMode) {
+            case kGetOperation:
+                printf("Welcome to %s!\n", restaurant.get_name().c_str());
+                do {
+                    op = get_int("Are you a customer (1) or an employee (2) (press 3 to quit)? ");
+                } while (op < 1 || op > 3);
+                mMode = static_cast<MainMode>(op);
+                continue_mode = true;
+                break;
+            case kInitialize:
+                restaurant.load_data();
+                mMode = kGetOperation;
+                break;
+            case kCustomer:
+                while (continue_mode) {
+                    switch (cMode) {
+                        case kCGetOperation:
+                            std::cout << "What would you like to do?" << std::endl;
+                            std::cout << "\t1. View Menu" << std::endl;
+                            std::cout << "\t2. Search by Cost" << std::endl;
+                            std::cout << "\t3. Search by Ingredients" << std::endl;
+                            std::cout << "\t4. Place Order" << std::endl;
+                            std::cout << "\t5. View Hours" << std::endl;
+                            std::cout << "\t6. View Address" << std::endl;
+                            std::cout << "\t7. View Phone" << std::endl;
+                            std::cout << "\t8. Log Out" << std::endl;
+
+                            do {
+                                op = get_int("Selection: ");
+                            } while (op < 1 || op > 8);
+
+                            cMode = static_cast<CustomerMode>(op);
+                            break;
+                        case kCViewMenu:
+                            restaurant.view_menu();
+                            cMode = kCGetOperation;
+                            break;
+                        case kCSearchByCost:
+                            restaurant.search_menu_by_price();
+                            cMode = kCGetOperation;
+                            break;
+                        case kCSearchByIngredients:
+                            restaurant.search_menu_by_ingredients();
+                            cMode = kCGetOperation;
+                            break;
+                        case kCPlaceOrder:
+                            restaurant.place_order();
+                            cMode = kCGetOperation;
+                            break;
+                        case kCViewHours:
+                            restaurant.view_hours();
+                            cMode = kCGetOperation;
+                            break;
+                        case kCViewAddress:
+                            restaurant.view_address();
+                            cMode = kCGetOperation;
+                            break;
+                        case kCViewPhone:
+                            restaurant.view_phone();
+                            cMode = kCGetOperation;
+                            break;
+                        case kCLogOut:
+                            continue_mode = false;
+                            cMode = kCGetOperation;
+                            break;
+                    }
+                }
+                mMode = kGetOperation;
+                break;
+            case kEmployee:
+                while (continue_mode) {
+                    switch (eMode) {
+                        case kEGetOperation:
+                            std::cout << "What would you like to do?" << std::endl;
+                            std::cout << "\t1. Change Hours" << std::endl;
+                            std::cout << "\t2. View Orders" << std::endl;
+                            std::cout << "\t3. Remove Order" << std::endl;
+                            std::cout << "\t4. Add Item to Menu" << std::endl;
+                            std::cout << "\t5. Remove Item from Menu" << std::endl;
+                            std::cout << "\t6. View Menu" << std::endl;
+                            std::cout << "\t7. View Hours" << std::endl;
+                            std::cout << "\t8. View Address" << std::endl;
+                            std::cout << "\t9. View Phone" << std::endl;
+                            std::cout << "\t10. Log Out" << std::endl;
+
+                            do {
+                                op = get_int("Selection: ");
+                            } while (op < 1 || op > 10);
+
+                            eMode = static_cast<EmployeeMode>(op);
+                            break;
+                        case kEAuthenticate:
+                            do {
+                                std::cout << "Please enter your ID: ";
+                                getline(std::cin, id);
+
+                                std::cout << "Please enter your password: ";
+                                getline(std::cin, password);
+                            } while (!restaurant.valid_login(id, password));
+
+                            eMode = kEGetOperation;
+                            break;
+                        case kEChangeHours:
+                            restaurant.change_hours();
+                            eMode = kEGetOperation;
+                            break;
+                        case kEViewOrders:
+                            restaurant.view_orders();
+                            eMode = kEGetOperation;
+                            break;
+                        case kERemoveOrder:
+                            restaurant.remove_orders();
+                            eMode = kEGetOperation;
+                            break;
+                        case kEAddItemToMenu:
+                            restaurant.add_to_menu();
+                            eMode = kEGetOperation;
+                            break;
+                        case kERemoveItemFromMenu:
+                            restaurant.remove_from_menu();
+                            eMode = kEGetOperation;
+                            break;
+                        case kEViewMenu:
+                            restaurant.view_menu();
+                            eMode = kEGetOperation;
+                            break;
+                        case kEViewHours:
+                            restaurant.view_hours();
+                            eMode = kEGetOperation;
+                            break;
+                        case kEViewAddress:
+                            restaurant.view_address();
+                            eMode = kEGetOperation;
+                            break;
+                        case kEViewPhone:
+                            restaurant.view_phone();
+                            eMode = kEGetOperation;
+                            break;
+                        case kELogOut:
+                            continue_mode = false;
+                            eMode = kEAuthenticate;
+                            break;
+                    }
+                }
+                mMode = kGetOperation;
+                break;
+            case kQuit:
+                return 0;
+        }
+    }
+}

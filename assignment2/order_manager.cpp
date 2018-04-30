@@ -42,7 +42,7 @@ int OrderManager::add_order(Order* new_order) {
     if (new_order->order_num == -1)
         new_order->order_num = this->next_order_num;
     new_arr[this->num_orders-1] = *new_order;
-    delete[] this->orders;
+    if (this->orders != NULL) delete[] this->orders;
     this->orders = new_arr;
     return this->next_order_num++;
 }
@@ -89,7 +89,7 @@ void OrderManager::add_pizza_to_order(int order_num, std::string name, int quant
         new_arr[i] = order->pizzas[i];
     }
     new_arr[order->num_distinct_pizzas-1] = pizza;
-    delete[] this->orders;
+    if (order->num_distinct_pizzas == 1) delete[] order->pizzas;
     order->pizzas = new_arr;
 }
 
@@ -107,7 +107,7 @@ void OrderManager::remove_order(int order_num) {
             counter++;
         }
     }
-    delete[] this->orders;
+    if (this->orders != NULL) delete[] this->orders;
     this->orders = new_arr;
     this->num_orders--;
 }
@@ -123,7 +123,7 @@ bool OrderManager::order_exists(int order_num) {
 void OrderManager::print() {
     printf("Order #\tCustomer Name\tCustomer CC#\tCustomer Address\tCustomer Phone #\n");
     for (int i = 0; i < this->num_orders; i++) {
-        printf("%s\n%s\n%s\n%s\n", this->orders[i].customer_name.c_str(), this->orders[i].credit_card.c_str(), this->orders[i].address.c_str(), this->orders[i].phone_number.c_str());
+        printf("%d\t%s\t%s\t%s\t%s\n", this->orders[i].order_num, this->orders[i].customer_name.c_str(), this->orders[i].credit_card.c_str(), this->orders[i].address.c_str(), this->orders[i].phone_number.c_str());
 
         std::cout << "Pizzas on Order:" << std::endl;
         printf("\tPizza\tSize\tQuantity\n");
@@ -159,6 +159,9 @@ void OrderManager::load_from_file() {
 
             file >> order_number;
             file >> name;
+            file >> temp; // last name
+            name.append(" ");
+            name.append(temp);
             file >> credit_card;
             file >> address;
             file >> phone;
