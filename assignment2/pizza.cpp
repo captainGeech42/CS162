@@ -1,5 +1,12 @@
 #include "pizza.hpp"
 
+/*********************************************************************
+** Function: Pizza
+** Description: Default constructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Pizza::Pizza() {
     this->name = "";
     this->small_cost = 0;
@@ -9,6 +16,13 @@ Pizza::Pizza() {
     this->ingredients = NULL;
 }
 
+/*********************************************************************
+** Function: Pizza
+** Description: Non-default constructor
+** Parameters: std::string, int, int, int
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Pizza::Pizza(std::string name, int small_cost, int medium_cost, int large_cost) {
     this->name = name;
     this->small_cost = small_cost;
@@ -18,10 +32,24 @@ Pizza::Pizza(std::string name, int small_cost, int medium_cost, int large_cost) 
     this->ingredients = NULL;
 }
 
+/*********************************************************************
+** Function: ~Pizza
+** Description: Destructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Pizza::~Pizza() {
     if (this->ingredients != NULL) delete[] this->ingredients;
 }
 
+/*********************************************************************
+** Function: Pizza
+** Description: Copy constructor
+** Parameters: const Pizza&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Pizza::Pizza(const Pizza& copy) {
     this->name = copy.name;
     this->small_cost = copy.small_cost;
@@ -36,6 +64,13 @@ Pizza::Pizza(const Pizza& copy) {
     }
 }
 
+/*********************************************************************
+** Function: operator=
+** Description: Assignment operator overload
+** Parameters: const Pizza&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 const Pizza& Pizza::operator=(const Pizza& copy) {
     this->name = copy.name;
     this->small_cost = copy.small_cost;
@@ -52,6 +87,13 @@ const Pizza& Pizza::operator=(const Pizza& copy) {
     return *this;
 }
 
+/*********************************************************************
+** Function: get_size
+** Description: Gets and parses a size from the user
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Size Pizza::get_size() {
     bool good = true;
     Size size;
@@ -80,6 +122,13 @@ Size Pizza::get_size() {
     return size;
 }
 
+/*********************************************************************
+** Function: parse_size
+** Description: Parses a size from a string
+** Parameters: std::string
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Size Pizza::parse_size(std::string size) {
     if (strcmpnc(size, "s")) return kSmall;
     else if (strcmpnc(size, "m")) return kMedium;

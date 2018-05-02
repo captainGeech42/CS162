@@ -1,5 +1,12 @@
 #include "restaurant.hpp"
 
+/*********************************************************************
+** Function: Restaurant
+** Description: Default constructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Restaurant::Restaurant() {
     this->employees = NULL;
     this->num_employees = 0;
@@ -10,11 +17,25 @@ Restaurant::Restaurant() {
     this->address = "";
 }
 
+/*********************************************************************
+** Function: ~Restaurant
+** Description: Destructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Restaurant::~Restaurant() {
     if (this->employees != NULL) delete[] this->employees;
     if (this->week != NULL) delete[] this->week;
 }
 
+/*********************************************************************
+** Function: Restaurant
+** Description: Copy constructor
+** Parameters: const Restaurant&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Restaurant::Restaurant(const Restaurant& copy) {
     this->menu = copy.menu;
     this->num_employees = copy.num_employees;
@@ -37,6 +58,13 @@ Restaurant::Restaurant(const Restaurant& copy) {
     this->order_manager = copy.order_manager;
 }
 
+/*********************************************************************
+** Function: operator=
+** Description: Assignment operator overload
+** Parameters: const Restaurant&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 const Restaurant& Restaurant::operator=(const Restaurant& copy) {
     this->menu = copy.menu;
     this->num_employees = copy.num_employees;
@@ -62,6 +90,13 @@ const Restaurant& Restaurant::operator=(const Restaurant& copy) {
 
 void Restaurant::order_from_menu() { this->order_from_menu(this->menu); }
 
+/*********************************************************************
+** Function: order_from_menu
+** Description: Gets information from the user and places an order from a given menu
+** Parameters: Menu
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void Restaurant::order_from_menu(Menu menu) {
     std::string name, credit_card, address, phone_number;
 
@@ -114,6 +149,7 @@ void Restaurant::load_data() {
     int field_counter = 0;
     while (!file.eof()) {
         std::getline(file, line);
+        if (line == "") break;
         switch (field_counter) {
             case 0:
                 this->name = line;
@@ -201,7 +237,7 @@ void Restaurant::view_phone() {
 void Restaurant::search_menu_by_price() {
     int price;
     do {
-        price = get_int("Please enter your maximum price");
+        price = get_int("Please enter your maximum price: ");
     } while (price < 0);
 
     Menu res = this->menu.search_pizza_by_cost(price, Pizza::get_size());
@@ -331,7 +367,7 @@ void Restaurant::serialize() {
     file << this->phone << std::endl;
     file << this->address << std::endl;
     file << this->num_employees << std::endl;
-    for (int i = 0; i < this->num_employees; i++) {
+    for (int i = 0; i < this->days_open; i++) {
         file << this->week[i].day << " " << this->week[i].open_hour << " " << this->week[i].close_hour << std::endl;
     }
     file.flush();
@@ -339,9 +375,9 @@ void Restaurant::serialize() {
 }
 
 void Restaurant::write_all_to_file() {
-    // this->serialize();
-    // this->menu.serialize();
-    // this->order_manager.serialize();
+    this->serialize();
+    this->menu.serialize();
+    this->order_manager.serialize();
 }
 
 Menu Restaurant::get_menu() const { return this->menu; }

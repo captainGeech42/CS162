@@ -1,11 +1,34 @@
+/*********************************************************************
+** Program Filename: order_manager.cpp
+** Author: Alexander Nead-Work
+** Date: 04/27/2018
+** Description: Immplementation for the OrderManager class
+** Input: n/a
+** Output: n/a
+*********************************************************************/
+
 #include "order_manager.hpp"
 
+/*********************************************************************
+** Function: OrderManager
+** Description: Default constructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 OrderManager::OrderManager() {
     this->num_orders = 0;
     this->orders = NULL;
     this->next_order_num = 1;
 }
 
+/*********************************************************************
+** Function: ~OrderManager
+** Description: Destructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 OrderManager::~OrderManager() {
     if (this->orders != NULL) {
         for (int i = 0; i < this->num_orders; i++) {
@@ -16,6 +39,13 @@ OrderManager::~OrderManager() {
     }
 }
 
+/*********************************************************************
+** Function: OrderManager
+** Description: Copy construtor
+** Parameters: const OrderManager&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 OrderManager::OrderManager(const OrderManager& copy) {
     this->num_orders = copy.num_orders;
     if (this->num_orders > 0) {
@@ -27,6 +57,13 @@ OrderManager::OrderManager(const OrderManager& copy) {
     this->next_order_num = copy.next_order_num;
 }
 
+/*********************************************************************
+** Function: operator=
+** Description: Assignment operator overload
+** Parameters: const OrderManager&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 const OrderManager& OrderManager::operator=(const OrderManager& copy) {
     this->num_orders = copy.num_orders;
     if (this->num_orders > 0) {
@@ -39,6 +76,13 @@ const OrderManager& OrderManager::operator=(const OrderManager& copy) {
     return *this;
 }
 
+/*********************************************************************
+** Function: add_order
+** Description: Adds a new order to the array
+** Parameters: Order*
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int OrderManager::add_order(Order* new_order) {
     this->num_orders++;
     Order* new_arr = new Order[this->num_orders];
@@ -53,6 +97,13 @@ int OrderManager::add_order(Order* new_order) {
     return this->next_order_num++;
 }
 
+/*********************************************************************
+** Function: create_order
+** Description: Creates a new order
+** Parameters: std::string, std::string, std::string, std::string
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int OrderManager::create_order(std::string name, std::string credit_card, std::string address, std::string phone_number) {
     Order order;
     order.order_num = -1;
@@ -60,10 +111,19 @@ int OrderManager::create_order(std::string name, std::string credit_card, std::s
     order.credit_card = credit_card;
     order.address = address;
     order.phone_number = phone_number;
+    order.num_distinct_pizzas = 0;
+    order.pizzas = new PizzaOrder[10];
 
     return this->add_order(&order);
 }
 
+/*********************************************************************
+** Function: create_order
+** Description: Creates a new order
+** Parameters: int, std::string, std::string, std::string, std::string
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void OrderManager::create_order(int order_num, std::string name, std::string credit_card, std::string address, std::string phone_number) {
     Order order;
     order.order_num = order_num;
@@ -72,7 +132,7 @@ void OrderManager::create_order(int order_num, std::string name, std::string cre
     order.address = address;
     order.phone_number = phone_number;
     order.num_distinct_pizzas = 0;
-    order.pizzas = NULL;
+    order.pizzas = new PizzaOrder[10];
 
     this->add_order(&order);
 }
@@ -97,7 +157,7 @@ void OrderManager::add_pizza_to_order(int order_num, std::string name, int quant
         new_arr[i] = order->pizzas[i];
     }
     new_arr[order->num_distinct_pizzas-1] = pizza;
-    if (order->pizzas != NULL) delete[] order->pizzas;
+    // if (order->pizzas != NULL) delete[] order->pizzas;
     order->pizzas = new_arr;
 }
 
@@ -204,7 +264,7 @@ void OrderManager::serialize() {
     for (int i = 0; i < this->num_orders; i++) {
         file << this->orders[i].order_num << " " << this->orders[i].customer_name << " " << this->orders[i].credit_card << " " << this->orders[i].address << " " << this->orders[i].phone_number;
         for (int j = 0; j < this->orders[i].num_distinct_pizzas; j++) {
-            file << " " << this->orders[i].pizzas[j].name << " " << this->orders[i].pizzas[j].size << " " << this->orders[i].pizzas[j].quantity;
+            file << " " << this->orders[i].pizzas[j].name << " " << (char)this->orders[i].pizzas[j].size << " " << this->orders[i].pizzas[j].quantity;
         }
         file << std::endl;
     }

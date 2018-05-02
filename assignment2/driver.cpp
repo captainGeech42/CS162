@@ -1,3 +1,12 @@
+/*********************************************************************
+** Program Filename: driver.cpp
+** Author: Alexander Nead-Work
+** Date: 04/27/2018
+** Description: Driver for A2
+** Input: n/a
+** Output: n/a
+*********************************************************************/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
@@ -9,6 +18,13 @@
 #include "order_manager.hpp"
 #include "structs.hpp"
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int main() {
     MainMode mMode = kInitialize;
     CustomerMode cMode = kCGetOperation;

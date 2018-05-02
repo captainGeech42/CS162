@@ -1,14 +1,35 @@
 #include "menu.hpp"
 
+/*********************************************************************
+** Function: Menu
+** Description: Default constructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Menu::Menu() {
     this->num_pizzas = 0;
     this->pizzas = NULL;
 }
 
+/*********************************************************************
+** Function: ~Menu
+** Description: Destructor
+** Parameters: none
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Menu::~Menu() {
     if (this->pizzas != NULL) delete[] pizzas;
 }
 
+/*********************************************************************
+** Function: Menu
+** Description: Copy constructor
+** Parameters: const Menu&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Menu::Menu(const Menu& copy) {
     this->num_pizzas = copy.num_pizzas;
     if (this->num_pizzas > 0) {
@@ -19,6 +40,13 @@ Menu::Menu(const Menu& copy) {
     }
 }
 
+/*********************************************************************
+** Function: operator=
+** Description: Assignment operator overload
+** Parameters: const Menu&
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 const Menu& Menu::operator=(const Menu& copy) {
     this->num_pizzas = copy.num_pizzas;
     if (this->num_pizzas > 0) {
@@ -33,6 +61,13 @@ const Menu& Menu::operator=(const Menu& copy) {
 int Menu::get_num_pizzas() const { return this->num_pizzas; }
 Pizza* Menu::get_pizzas() const { return this->pizzas; }
 
+/*********************************************************************
+** Function: search_pizza_by_cost
+** Description: Builds a new menu of pizzas that meet the price criteria
+** Parameters: int, Size
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Menu Menu::search_pizza_by_cost(int upper_bound, Size size) {
     Menu res;
     for (int i = 0; i < this->num_pizzas; i++) {
@@ -47,6 +82,13 @@ Menu Menu::search_pizza_by_cost(int upper_bound, Size size) {
     return res;
 }
 
+/*********************************************************************
+** Function: search_by_ingredients_to_include
+** Description: Builds a new menu with pizzas that contain the magic ingredients
+** Parameters: std::string*, int
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Menu Menu::search_by_ingredients_to_include(std::string* ingredients, int num_ingredients) {
     Menu res;
     for (int i = 0; i < this->num_pizzas; i++) {
@@ -57,6 +99,13 @@ Menu Menu::search_by_ingredients_to_include(std::string* ingredients, int num_in
     return res;
 }
 
+/*********************************************************************
+** Function: search_by_ingredients_to_exclude
+** Description: Builds a new menu with pizzas that don't contain the magic ingredients
+** Parameters: std::string*, int
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Menu Menu::search_by_ingredients_to_exclude(std::string* ingredients, int num_ingredients) {
     Menu res;
     bool skip_remaining = false;
