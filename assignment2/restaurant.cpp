@@ -96,7 +96,9 @@ void Restaurant::order_from_menu(Menu menu) {
             name_good = menu.contains_pizza(pizza_name);
         } while (!name_good);
 
-        quantity = get_int("Please enter your desired quantity: ");
+        do {
+            quantity = get_int("Please enter your desired quantity: ");
+        } while (quantity < 1);
 
         size = Pizza::get_size();
 
@@ -337,9 +339,9 @@ void Restaurant::serialize() {
 }
 
 void Restaurant::write_all_to_file() {
-    this->serialize();
-    this->menu.serialize();
-    this->order_manager.serialize();
+    // this->serialize();
+    // this->menu.serialize();
+    // this->order_manager.serialize();
 }
 
 Menu Restaurant::get_menu() const { return this->menu; }

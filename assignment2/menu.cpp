@@ -59,10 +59,22 @@ Menu Menu::search_by_ingredients_to_include(std::string* ingredients, int num_in
 
 Menu Menu::search_by_ingredients_to_exclude(std::string* ingredients, int num_ingredients) {
     Menu res;
+    bool skip_remaining = false;
     for (int i = 0; i < this->num_pizzas; i++) {
-        if (contains_array(this->pizzas[i].get_num_ingredients(), this->pizzas[i].get_ingredients(), num_ingredients, ingredients)) {
-            res.add_to_menu(this->pizzas[i]);
+        for (int j = 0; j < num_ingredients; j++) {
+            for (int k = 0; k < this->pizzas[i].get_num_ingredients(); k++) {
+                if (this->pizzas[i].get_ingredients()[k] == ingredients[j]) {
+                    skip_remaining = true;
+                    break;
+                }
+            }
+            if (skip_remaining) {
+                break;
+            }
         }
+        if (!skip_remaining) res.add_to_menu(this->pizzas[i]);
+        
+        skip_remaining = false;
     }
     return res;
 }

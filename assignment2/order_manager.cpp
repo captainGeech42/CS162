@@ -7,7 +7,13 @@ OrderManager::OrderManager() {
 }
 
 OrderManager::~OrderManager() {
-    if (this->orders != NULL) delete[] orders;
+    if (this->orders != NULL) {
+        for (int i = 0; i < this->num_orders; i++) {
+            delete[] this->orders[i].pizzas;
+        }
+
+        delete[] this->orders;
+    }
 }
 
 OrderManager::OrderManager(const OrderManager& copy) {
@@ -65,6 +71,8 @@ void OrderManager::create_order(int order_num, std::string name, std::string cre
     order.credit_card = credit_card;
     order.address = address;
     order.phone_number = phone_number;
+    order.num_distinct_pizzas = 0;
+    order.pizzas = NULL;
 
     this->add_order(&order);
 }
@@ -89,7 +97,7 @@ void OrderManager::add_pizza_to_order(int order_num, std::string name, int quant
         new_arr[i] = order->pizzas[i];
     }
     new_arr[order->num_distinct_pizzas-1] = pizza;
-    if (order->num_distinct_pizzas == 1) delete[] order->pizzas;
+    if (order->pizzas != NULL) delete[] order->pizzas;
     order->pizzas = new_arr;
 }
 
@@ -148,13 +156,17 @@ void OrderManager::load_from_file() {
 
         int lines = 0;
         while (!file.eof()) {
-            lines++;
             getline(file, temp);
+            if (temp != "") {
+                lines++;
+            }
         }
         file.close();
         file.open(ORDER_DATA);
 
         for (int i = 0; i < lines; i++) {
+            if (file.eof()) break;
+
             ss.str(std::string());
 
             file >> order_number;
