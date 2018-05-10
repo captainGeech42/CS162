@@ -1,13 +1,14 @@
 #ifndef GAME_MANAGER
 #define GAME_MANAGER
 
-#include "list.hpp"
 #include "property.hpp"
 
 class GameManager {
 private:
-    List* available_properties;
-    List* owned_properties;
+    Property* available_properties;
+    int num_available_properties;
+    Property* owned_properties;
+    int num_owned_properties;
     // events
     int bank_account;
 

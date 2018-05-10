@@ -35,4 +35,4 @@ clean:
 	$(RM) apartment.o business.o game_manager.o property.o driver.o *.out $(exe) *.gch peda*
 
 compress:
-	tar zcvf assign3.tar.gz Makefile helper.* apartment.?pp business.?pp game_manager.?pp property.?pp driver.?pp
+	tar zcvf assign3.tar.gz Makefile helper.* apartment.?pp business.?pp game_manager.?pp list.?pp property.?pp driver.?pp

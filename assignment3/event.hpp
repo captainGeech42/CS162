@@ -1,10 +1,13 @@
 #ifndef EVENT
 #define EVENT
 
-#include 
-
-class Event {
-    
-}
+enum Event {
+    kHurricane,
+    kStockMarket,
+    kWildfire,
+    kEarthquake,
+    kTornado,
+    kGentrification
+};
 
 #endif
