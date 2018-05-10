@@ -1,5 +1,5 @@
-#ifndef APARTMENT
-#define APARTMENT
+#ifndef APARTMENT_COMPLEX
+#define APARTMENT_COMPLEX
 
 #include "property.hpp"
 

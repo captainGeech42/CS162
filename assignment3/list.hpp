@@ -33,6 +33,13 @@ public:
         this->array = new T[this->max_size];
     }
 
+    List(int base_size) {
+        this->size = 0;
+        this->max_size = base_size;
+
+        this->array = new T[this->max_size];
+    }
+
     List(const List& rhs) {
         this->size = rhs.size;
         this->max_size = rhs.max_size;
