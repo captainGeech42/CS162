@@ -1,16 +1,12 @@
 #ifndef LIST
 #define LIST
 
-#include <cstddef>
 #include <stdio.h>
 
-class ListType {
-// intentionally empty
-};
-
+template <class T>
 class List {
 private:
-    ListType* array;
+    T* array;
     int size;
 public:
     List();
@@ -20,7 +16,7 @@ public:
 
     const List& operator=(const List&);
 
-    void add(const ListType*);
+    void add(const T*);
 };
 
 #endif

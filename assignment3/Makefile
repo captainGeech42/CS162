@@ -13,8 +13,8 @@ gdb: debug
 run: $(exe)
 	./$(exe)
 
-$(exe): apartment.o business.o driver.o game_manager.o list.o property.o
-	$(CC) $(C_FLAGS) -o $(exe) apartment.o business.o driver.o game_manager.o list.o property.o 
+$(exe): apartment.o business.o driver.o game_manager.o property.o
+	$(CC) $(C_FLAGS) -o $(exe) apartment.o business.o driver.o game_manager.o property.o 
 
 apartment.o: apartment.cpp
 	$(CC) $(C_FLAGS) -c apartment.cpp
@@ -28,14 +28,11 @@ driver.o: driver.cpp
 game_manager.o: game_manager.cpp
 	$(CC) $(C_FLAGS) -c game_manager.cpp
 
-list.o: list.cpp
-	$(CC) $(C_FLAGS) -c list.cpp
-
 property.o: property.cpp
 	$(CC) $(C_FLAGS) -c property.cpp
 
 clean:
-	$(RM) apartment.o business.o game_manager.o list.o property.o driver.o *.out $(exe) *.gch peda*
+	$(RM) apartment.o business.o game_manager.o property.o driver.o *.out $(exe) *.gch peda*
 
 compress:
-	tar zcvf assign3.tar.gz Makefile helper.* apartment.?pp business.?pp game_manager.?pp list.?pp property.?pp driver.?pp
+	tar zcvf assign3.tar.gz Makefile helper.* apartment.?pp business.?pp game_manager.?pp property.?pp driver.?pp

@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-int main() {
-    printf("not in a debug\n");
+#include "list.hpp"
 
-#ifdef DEBUG
-    printf("in a debug\n");
-#endif
+int main() {
+    List<int> mylist(5);
 
     return 0;
 }
