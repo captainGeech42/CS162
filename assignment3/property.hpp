@@ -4,6 +4,10 @@
 #include "list.hpp"
 #include "tenant.hpp"
 
+#define PROPERTY_TAX 0.015
+#define MAX_MORTGAGE 5000
+#define MAX_PROPERTY_VALUE 600000
+
 class Property {
 public:
     enum Location {
@@ -14,16 +18,15 @@ public:
         kNorthwest
     };
     
-    virtual void collect_rent() = 0;
+    virtual void collect_rent();
+
+    Property& generate_property();
 
 protected:
     Location location;
-    static int min_cost;
-    const static int max_cost = 600000;
-    constexpr static float property_tax = 0.015;
     List<Tenant> tenants;
-    static int max_tenants;
-    int mortgage;
+    int mortgage_amount;
+    int mortgage_duration;
 };
 
 #endif

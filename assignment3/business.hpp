@@ -12,17 +12,13 @@ public:
     };
 
     Business();
-    Business(const Business&);
-    ~Business();
-
-    const Business& operator=(const Business&);
 
 private:
     int rent;
     Size size;
 
-    int min_budget = 2000;
-    int max_budget = 10000;
+    const static int min_budget = 2000;
+    const static int max_budget = 10000;
 };
 
 #endif

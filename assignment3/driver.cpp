@@ -1,13 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "list.hpp"
+#include "tenant.hpp"
+#include "business.hpp"
 
 int main() {
-    List<int> mylist;
-    mylist.push_back(5);
-    mylist.push_back(7);
+    srand(time(NULL));
 
-    printf("%d\n", mylist[1]);
+    List<Tenant> mylist;
+    Business a;
+
+    mylist.push_back(a);
 
     return 0;
 }

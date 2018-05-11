@@ -1,6 +1,7 @@
 #ifndef GAME_MANAGER
 #define GAME_MANAGER
 
+#include "event.hpp"
 #include "list.hpp"
 #include "property.hpp"
 
@@ -8,10 +9,22 @@ class GameManager {
 private:
     List<Property> available_properties;
     List<Property> owned_properties;
-    
+
     int bank_account;
 
 public:
+    enum State {
+        kInitalize,
+        kDebts,
+        kTaxes,
+        kRent,
+        kEvent,
+        kPurchase,
+        kSell,
+        kChangeRent,
+        kGameOver
+    };
+
     GameManager();
     GameManager(const GameManager&);
     ~GameManager();
