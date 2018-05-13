@@ -46,7 +46,7 @@ public:
         this->array = NULL;
 
         if (this->size != 0) {
-            this->array = new T[this->size];
+            this->array = new T[this->max_size];
             for (int i = 0; i < this->size; i++) {
                 this->array[i] = rhs.array[i];
             }
@@ -64,7 +64,7 @@ public:
         if (this->array != NULL) delete[] this->array;
 
         if (this->size != 0) {
-            this->array = new T[this->size];
+            this->array = new T[this->max_size];
             for (int i = 0; i < this->size; i++) {
                 this->array[i] = rhs.array[i];
             }
@@ -121,6 +121,28 @@ public:
             this->array[i+1] = this->array[i];
         }
         this->array[index] = item;
+    }
+
+    void erase(int position) {
+        assert(position >= 0 && position < this->size);
+        
+        for (int i = position; i < this->size - 1; i++) {
+            this->array[i] = this->array[i+1];
+        }
+
+        size--;
+    }
+
+    void erase(int start, int finish) {
+        assert(start >= 0 && start < this->size - 1);
+        assert(finish >= 1 && finish < this->size);
+        assert(start < finish);
+
+        for (int i = start; i < this->size - (finish - start); i++) {
+            this->array[i] = this->array[i+(finish-start)];
+        }
+
+        size -= (finish - start);
     }
 
     void clear() {

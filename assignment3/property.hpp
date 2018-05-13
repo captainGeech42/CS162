@@ -1,12 +1,12 @@
 #ifndef PROPERTY
 #define PROPERTY
 
+#include <stdlib.h>
+
 #include "list.hpp"
 #include "tenant.hpp"
 
 #define PROPERTY_TAX 0.015
-#define MAX_MORTGAGE 5000
-#define MAX_PROPERTY_VALUE 600000
 
 class Property {
 public:
@@ -17,16 +17,20 @@ public:
         kSouthwest,
         kNorthwest
     };
+
+    Property();
     
     virtual void collect_rent();
 
     Property& generate_property();
 
 protected:
+    static const int max_mortgage = 5000;
+    static const int max_value = 600000;
+
     Location location;
     List<Tenant> tenants;
-    int mortgage_amount;
-    int mortgage_duration;
+    int num_tenants, value, mortgage_amount, mortgage_duration;
 };
 
 #endif

@@ -1,12 +1,15 @@
 #ifndef HOUSE
 #define HOUSE
 
+#include "citizen.hpp"
 #include "property.hpp"
 
-#define HOUSE_MIN_VALUE 100000
-
 class House : public Property {
+private:
+    static const int min_value = 100000;
 
+public:
+    House();
 };
 
 #endif

@@ -15,6 +15,7 @@ private:
 public:
     enum State {
         kInitalize,
+        kUpdateProperties,
         kDebts,
         kTaxes,
         kRent,
@@ -22,7 +23,6 @@ public:
         kPurchase,
         kSell,
         kChangeRent,
-        kGameOver
     };
 
     GameManager();
@@ -33,13 +33,17 @@ public:
 
     int get_bank_account() const;
 
+    void generate_properties();
+
     bool is_game_over();
     void pay_debts();
     void pay_taxes();
-    void update_tenants();
+    void collect_rent();
+    void update_properties();
     void buy_property();
     void sell_property();
     void event();
+    void update_rent();
 };
 
 #endif

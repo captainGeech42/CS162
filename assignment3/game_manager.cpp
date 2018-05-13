@@ -24,3 +24,6 @@ bool GameManager::is_game_over() {
     return this->bank_account <= 0 || this->bank_account >= 100000;
 }
 
+void GameManager::generate_properties() {
+    
+}
