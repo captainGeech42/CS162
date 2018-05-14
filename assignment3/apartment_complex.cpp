@@ -9,4 +9,6 @@ ApartmentComplex::ApartmentComplex() {
         Citizen t;
         this->tenants.push_back(t);
     }
+
+    this->set_rents();
 }

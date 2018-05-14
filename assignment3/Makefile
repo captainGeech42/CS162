@@ -13,8 +13,8 @@ gdb: clean debug
 run: $(exe)
 	./$(exe)
 
-$(exe): apartment_complex.o business_complex.o business.o citizen.o driver.o game_manager.o property.o tenant.o
-	$(CC) $(C_FLAGS) -o $(exe) apartment_complex.o business_complex.o business.o citizen.o driver.o game_manager.o property.o tenant.o
+$(exe): apartment_complex.o business_complex.o business.o citizen.o driver.o game_manager.o helper.o property.o tenant.o
+	$(CC) $(C_FLAGS) -o $(exe) apartment_complex.o business_complex.o business.o citizen.o driver.o game_manager.o helper.o property.o tenant.o
 
 apartment_complex.o: apartment_complex.cpp
 	$(CC) $(C_FLAGS) -c apartment_complex.cpp

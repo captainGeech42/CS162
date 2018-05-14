@@ -6,4 +6,6 @@ House::House() {
     this->num_tenants = 1;
     Citizen t;
     this->tenants.push_back(t);
+
+    this->set_rents();
 }

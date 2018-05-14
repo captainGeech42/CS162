@@ -10,6 +10,8 @@ private:
 
 public:
     House();
+
+    int collect_rent();
 };
 
 #endif

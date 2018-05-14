@@ -4,13 +4,25 @@
 #include "event.hpp"
 #include "list.hpp"
 #include "property.hpp"
+#include "house.hpp"
+#include "apartment_complex.hpp"
+#include "business_complex.hpp"
+#include "event.hpp"
+
+#ifdef MAKE
+#include "helper.hpp"
+#else
+#include "O:\cpphelper\helper.hpp"
+#endif
 
 class GameManager {
 private:
     List<Property> available_properties;
     List<Property> owned_properties;
 
-    int bank_account;
+    int bank_account, months;
+
+    void print_owned();
 
 public:
     enum State {
@@ -27,7 +39,6 @@ public:
 
     GameManager();
     GameManager(const GameManager&);
-    ~GameManager();
 
     const GameManager& operator=(const GameManager&);
 
