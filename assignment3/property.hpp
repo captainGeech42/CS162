@@ -30,7 +30,7 @@ public:
     void print();
     void do_event(Event);
     void do_gentrification(Location);
-    void update_rent();
+    virtual void update_rent();
 
 protected:
     static const int max_mortgage = 5000;

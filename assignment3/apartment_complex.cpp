@@ -12,3 +12,14 @@ ApartmentComplex::ApartmentComplex() {
 
     this->set_rents();
 }
+
+void ApartmentComplex::update_rent() {
+    int rent;
+    do {
+        rent = get_int("Please enter a new rent: ");
+    } while (rent < 0);
+
+    for (int i = 0; i < this->tenants.get_size(); i++) {
+        this->tenants[i].set_rent(rent);
+    }
+}

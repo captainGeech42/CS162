@@ -25,3 +25,18 @@ int BusinessComplex::collect_rent() {
 
     return Property::collect_rent();
 }
+
+void BusinessComplex::update_rent() {
+    int tenant;
+    do {
+        tenant = get_int("Please enter which tenant you would like to change the rent for: ");
+    } while (tenant < 0 || tenant >= this->tenants.get_size());
+
+    int rent;
+    do {
+        printf("Please enter the new rent for tenant #%d: ", tenant);
+        rent = get_int("");
+    } while (rent < 0);
+
+    this->tenants[tenant].set_rent(rent);
+}

@@ -118,5 +118,6 @@ void Property::do_gentrification(Location location) {
 }
 
 void Property::update_rent() {
-
+    // intentionally empty
+    return;
 }

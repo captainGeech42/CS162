@@ -6,6 +6,12 @@
 #include "property.hpp"
 #include "business.hpp"
 
+#ifdef MAKE
+#include "helper.hpp"
+#else
+#include "O:\cpphelper\helper.hpp"
+#endif
+
 #define PROPERTY_VALUE_INCREASE 1.01
 
 class BusinessComplex : public Property {
@@ -17,6 +23,7 @@ public:
     BusinessComplex();
 
     int collect_rent();
+    void update_rent();
 };
 
 #endif

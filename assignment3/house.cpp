@@ -9,3 +9,14 @@ House::House() {
 
     this->set_rents();
 }
+
+void House::update_rent() {
+    int rent;
+    do {
+        rent = get_int("Please enter a new rent: ");
+    } while (rent < 0);
+
+    this->tenants[0].set_rent(rent);
+}
+
+int House::collect_rent() {return 0;}

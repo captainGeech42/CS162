@@ -6,6 +6,12 @@
 #include "property.hpp"
 #include "citizen.hpp"
 
+#ifdef MAKE
+#include "helper.hpp"
+#else
+#include "O:\cpphelper\helper.hpp"
+#endif
+
 class ApartmentComplex : public Property {
 private:
     const static int min_value = 300000;
@@ -13,6 +19,8 @@ private:
 
 public:
     ApartmentComplex();
+
+    void update_rent();
 };
 
 #endif

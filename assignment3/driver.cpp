@@ -8,6 +8,8 @@ int main()
 {
     srand(time(NULL));
 
+    printf("!!!!!!!!!!!!!!!!!fix selling properties!!!!!!!!!!!!\n");
+
     GameManager gm;
     GameManager::State state = GameManager::kInitalize;
 

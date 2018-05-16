@@ -2,6 +2,7 @@
 #define HOUSE
 
 #include "citizen.hpp"
+#include "helper.hpp"
 #include "property.hpp"
 
 class House : public Property {
@@ -12,6 +13,7 @@ public:
     House();
 
     int collect_rent();
+    void update_rent();
 };
 
 #endif

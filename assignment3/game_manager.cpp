@@ -105,6 +105,8 @@ void GameManager::buy_property() {
 }
 
 void GameManager::sell_property() {
+    //TODO this is not correct!
+
     this->print_owned();
 
     int val;
