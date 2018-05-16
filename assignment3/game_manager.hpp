@@ -1,6 +1,8 @@
 #ifndef GAME_MANAGER
 #define GAME_MANAGER
 
+#include <vector>
+
 #include "event.hpp"
 #include "list.hpp"
 #include "property.hpp"
@@ -8,12 +10,7 @@
 #include "apartment_complex.hpp"
 #include "business_complex.hpp"
 #include "event.hpp"
-
-#ifdef MAKE
 #include "helper.hpp"
-#else
-#include "O:\cpphelper\helper.hpp"
-#endif
 
 class GameManager {
 private:
