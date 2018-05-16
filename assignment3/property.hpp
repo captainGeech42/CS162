@@ -27,7 +27,7 @@ public:
     int pay_mortgage();
     int get_value() const;
     void update_tenants();
-    void print();
+    virtual void print();
     void do_event(Event);
     void do_gentrification(Location);
     virtual void update_rent();

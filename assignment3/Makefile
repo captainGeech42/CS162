@@ -10,7 +10,7 @@ debug: all
 gdb: clean debug
 	gdb $(exe)
 
-run: $(exe)
+run: all
 	./$(exe)
 
 $(exe): apartment_complex.o business_complex.o business.o citizen.o driver.o game_manager.o helper.o house.o property.o tenant.o

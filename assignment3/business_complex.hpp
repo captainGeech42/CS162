@@ -24,6 +24,7 @@ public:
 
     int collect_rent();
     void update_rent();
+    void print();
 };
 
 #endif

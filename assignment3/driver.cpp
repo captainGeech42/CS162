@@ -4,19 +4,14 @@
 
 #include "game_manager.hpp"
 
-int main()
-{
+int main() {
     srand(time(NULL));
-
-    printf("!!!!!!!!!!!!!!!!!fix selling properties!!!!!!!!!!!!\n");
 
     GameManager gm;
     GameManager::State state = GameManager::kInitalize;
 
-    while (!gm.is_game_over())
-    {
-        switch (state)
-        {
+    while (!gm.is_game_over()) {
+        switch (state) {
         case GameManager::kInitalize:
             gm.generate_properties();
             state = GameManager::kDebts;

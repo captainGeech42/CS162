@@ -23,3 +23,9 @@ void ApartmentComplex::update_rent() {
         this->tenants[i].set_rent(rent);
     }
 }
+
+void ApartmentComplex::print() {
+    printf("Property type: Apartment Complex\n");
+
+    Property::print();
+}

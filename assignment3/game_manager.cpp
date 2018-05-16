@@ -22,7 +22,7 @@ const GameManager& GameManager::operator=(const GameManager& rhs) {
 int GameManager::get_bank_account() const { return this->bank_account; }
 
 bool GameManager::is_game_over() {
-    return this->bank_account <= 0 || this->bank_account >= 100000;
+    return this->bank_account <= 0 || this->bank_account >= 1000000;
 }
 
 void GameManager::generate_properties() {
@@ -65,56 +65,79 @@ void GameManager::update_properties() {
 }
 
 void GameManager::buy_property() {
-    int one, two, three;
-    one = rand() % this->available_properties.get_size();
-    do {
-        two = rand() % this->available_properties.get_size(); 
-    } while (one != two);
-    do {
-        three = rand() % this->available_properties.get_size(); 
-    } while (one != three && two != three);
-
-    printf("Property #1:\n");
-    this->available_properties[one].print();
-    printf("Property #2:\n");
-    this->available_properties[two].print();
-    printf("Property #3:\n");
-    this->available_properties[three].print();
-
-    int val;
-    do {
-        val = get_int("Which property would you like to buy? 1, 2, or 3? ");
-    } while (val < 1 || val > 3);
-
-    Property prop;
-    switch (val) {
-        case 1:
-            prop = this->available_properties[one];
-            this->available_properties.erase(one);
-            break;
-        case 2:
-            prop = this->available_properties[two];
-            this->available_properties.erase(two);
-            break;
-        case 3:
-            prop = this->available_properties[three];
-            this->available_properties.erase(three);
-            break;
+    if (this->available_properties.get_size() == 0) {
+        this->generate_properties();
     }
-    this->owned_properties.push_back(prop);
+
+    if (get_yes_no("Would you like to buy a property? ")) {
+        int one, two, three;
+        one = rand() % this->available_properties.get_size();
+        do {
+            two = rand() % this->available_properties.get_size(); 
+        } while (one == two);
+        do {
+            three = rand() % this->available_properties.get_size(); 
+        } while (one == three && two == three);
+
+        printf("Property #1:\n");
+        this->available_properties[one].print();
+        printf("Property #2:\n");
+        this->available_properties[two].print();
+        printf("Property #3:\n");
+        this->available_properties[three].print();
+
+        int val;
+        do {
+            val = get_int("Which property would you like to buy? 1, 2, or 3? ");
+        } while (val < 1 || val > 3);
+
+        Property prop;
+        switch (val) {
+            case 1:
+                prop = this->available_properties[one];
+                this->available_properties.erase(one);
+                break;
+            case 2:
+                prop = this->available_properties[two];
+                this->available_properties.erase(two);
+                break;
+            case 3:
+                prop = this->available_properties[three];
+                this->available_properties.erase(three);
+                break;
+        }
+        this->owned_properties.push_back(prop);
+    }
 }
 
 void GameManager::sell_property() {
-    //TODO this is not correct!
+    if (get_yes_no("Would you like to sell a property? ")) {
+        this->print_owned();
 
-    this->print_owned();
+        int index;
+        do {
+            index = get_int("Which property would you like to sell? ");
+        } while (index < 0 || index >= this->owned_properties.get_size());
 
-    int val;
-    do {
-        val = get_int("Which property would you like to sell? ");
-    } while (val < 0 || val >= this->owned_properties.get_size());
+        int property_value = get_int("How much would you like to attempt to sell it for? ");
 
-    this->owned_properties.erase(val);
+        switch (rand() % 3) {
+            case 0:
+                printf("You received 90%% of the property value.\n");
+                this->bank_account += 0.9 * this->owned_properties[index].get_value();
+                break;
+            case 1:
+                printf("You received 100%% of the property value.\n");
+                this->bank_account += this->owned_properties[index].get_value();
+                break;
+            case 2:
+                printf("You received your asking price.\n");
+                this->bank_account += property_value;
+                break;
+        }
+
+        this->owned_properties.erase(index);
+    }
 }
 
 void GameManager::event() {
@@ -175,9 +198,15 @@ void GameManager::event() {
         for (int i = 0; i < this->owned_properties.get_size(); i++) {
             this->owned_properties[i].do_event(event);
         }
+        for (int i = 0; i < this->available_properties.get_size(); i++) {
+            this->available_properties[i].do_event(event);
+        }
     } else {
         for (int i = 0; i < this->owned_properties.get_size(); i++) {
             this->owned_properties[i].do_gentrification(location);
+        }
+        for (int i = 0; i < this->available_properties.get_size(); i++) {
+            this->available_properties[i].do_gentrification(location);
         }
     }
 }

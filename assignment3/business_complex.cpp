@@ -40,3 +40,9 @@ void BusinessComplex::update_rent() {
 
     this->tenants[tenant].set_rent(rent);
 }
+
+void BusinessComplex::print() {
+    printf("Property type: Business Complex\n");
+
+    Property::print();
+}

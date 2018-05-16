@@ -21,6 +21,7 @@ public:
     ApartmentComplex();
 
     void update_rent();
+    void print();
 };
 
 #endif

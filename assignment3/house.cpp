@@ -19,4 +19,8 @@ void House::update_rent() {
     this->tenants[0].set_rent(rent);
 }
 
-int House::collect_rent() {return 0;}
+void House::print() {
+    printf("Property type: House\n");
+
+    Property::print();
+}
