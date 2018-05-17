@@ -4,6 +4,13 @@
 
 #include "game_manager.hpp"
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int main() {
     srand(time(NULL));
 

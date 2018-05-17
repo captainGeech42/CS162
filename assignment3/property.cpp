@@ -1,5 +1,12 @@
 #include "property.hpp"
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Property::Property() {
     this->location = static_cast<Location>(rand() % 5);
 
@@ -7,15 +14,29 @@ Property::Property() {
     this->mortgage_amount_paid = 0;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 Property::~Property() {
     for (int i = 0; i < this->tenants.get_size(); i++) {
         delete this->tenants[i];
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int Property::collect_rent() {
     int total_rent = 0;
-    for (int i = 0; i < num_tenants; i++) {
+    for (int i = 0; i < this->tenants.get_size(); i++) {
         if (this->tenants[i]->will_pay_rent()) {
             total_rent += this->tenants[i]->get_rent();
         }
@@ -24,6 +45,13 @@ int Property::collect_rent() {
     return total_rent;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void Property::set_rents() {
     int lowest = 50000; // garbage value, just an arbitrary big number
     for (int i = 0; i < this->num_tenants; i++) {
@@ -37,6 +65,13 @@ void Property::set_rents() {
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int Property::pay_mortgage() {
     if (this->mortgage_amount_paid < this->mortgage_amount) {
         this->mortgage_amount_paid += this->mortgage_amount;
@@ -46,8 +81,22 @@ int Property::pay_mortgage() {
     return 0;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int Property::get_value() const { return this->value; }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void Property::update_tenants() {
     for (int i = 0; i < this->tenants.get_size(); i++) {
         if (!this->tenants[i]->will_pay_rent() && this->tenants[i]->will_leave()) {
@@ -57,6 +106,13 @@ void Property::update_tenants() {
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void Property::print() {
     printf("Location: ");
     switch (this->location) {
@@ -94,6 +150,13 @@ void Property::print() {
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void Property::do_event(Event event) {
     assert(event != kGentrification);
 
@@ -119,15 +182,36 @@ void Property::do_event(Event event) {
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void Property::do_gentrification(Location location) {
     if (this->location == location) this->value *= 1.2;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void Property::update_rent() {
     // intentionally empty
     return;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int Property::get_total_rent() {
     int rent = 0;
     for (int i = 0; i < this->tenants.get_size(); i++) {
@@ -139,6 +223,13 @@ int Property::get_total_rent() {
     return rent;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int Property::get_mortgage() const { 
     if (this->mortgage_months_remaining > 0) {
         return this->mortgage_amount;

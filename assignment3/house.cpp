@@ -1,5 +1,12 @@
 #include "house.hpp"
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 House::House() {
     this->value = (rand() % ((this->max_value - this->min_value) / 100) * 100);
     this->mortgage_duration = ceil((float)this->value/(float)this->mortgage_amount);
@@ -12,6 +19,13 @@ House::House() {
     this->set_rents();
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void House::update_rent() {
     int rent;
     do {
@@ -21,6 +35,13 @@ void House::update_rent() {
     this->tenants[0]->set_rent(rent);
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void House::print() {
     printf("Property type: House\n");
 

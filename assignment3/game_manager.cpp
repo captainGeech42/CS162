@@ -1,16 +1,37 @@
 #include "game_manager.hpp"
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 GameManager::GameManager() {
     this->bank_account = 500000;
     this->months = 0;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 GameManager::GameManager(const GameManager& rhs) {
     this->available_properties = rhs.available_properties;
     this->owned_properties = rhs.owned_properties;
     this->bank_account = rhs.bank_account;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 GameManager::~GameManager() {
     for (int i = 0; i < this->available_properties.get_size(); i++) {
         delete this->available_properties[i];
@@ -20,6 +41,13 @@ GameManager::~GameManager() {
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 const GameManager& GameManager::operator=(const GameManager& rhs) {
     this->available_properties = rhs.available_properties;
     this->owned_properties = rhs.owned_properties;
@@ -28,12 +56,33 @@ const GameManager& GameManager::operator=(const GameManager& rhs) {
     return *this;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 int GameManager::get_bank_account() const { return this->bank_account; }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 bool GameManager::is_game_over() {
     return this->bank_account <= 0 || this->bank_account >= 1000000;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void GameManager::generate_properties() {
     for (int i = 0; i < 3; i++) {
         Property *p;
@@ -49,12 +98,26 @@ void GameManager::generate_properties() {
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void GameManager::pay_debts() {
     for (int i = 0; i < this->owned_properties.get_size(); i++) {
         this->bank_account -= this->owned_properties[i]->pay_mortgage();
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void GameManager::pay_taxes() {
     if (this->months % 12 == 0 && this->months != 0) {
         printf("It's your favorite month of the year! Time to pay taxes!\n");
@@ -66,18 +129,39 @@ void GameManager::pay_taxes() {
     this->months++;
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void GameManager::collect_rent() {
     for (int i = 0; i < this->owned_properties.get_size(); i++) {
         this->bank_account += this->owned_properties[i]->collect_rent();
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void GameManager::update_properties() {
     for (int i = 0; i < this->owned_properties.get_size(); i++) {
         this->owned_properties[i]->update_tenants();
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void GameManager::buy_property() {
     if (this->available_properties.get_size() == 0) {
         this->generate_properties();
@@ -125,12 +209,14 @@ void GameManager::buy_property() {
 }
 
 void GameManager::sell_property() {
+    if (this->owned_properties.get_size() == 0) return;
+
     if (get_yes_no("Would you like to sell a property? ")) {
         this->print_owned();
 
         int index;
         do {
-            index = get_int("Which property would you like to sell? ");
+            index = get_int("Which property would you like to sell? ") - 1;
         } while (index < 0 || index >= this->owned_properties.get_size());
 
         int property_value = get_int("How much would you like to attempt to sell it for? ");
@@ -226,12 +312,14 @@ void GameManager::event() {
 }
 
 void GameManager::update_rent() {
+    if (this->owned_properties.get_size() == 0) return;
+
     if (get_yes_no("Would you like to change the rent on a property?")) {
         print_owned();
 
         int val;
         do {
-            val = get_int("Please select the property you would like to update the rent on");
+            val = get_int("Please select the property you would like to update the rent on") - 1;
         } while (val < 0 || val >= this->owned_properties.get_size());
 
         this->owned_properties[val]->update_rent();

@@ -1,5 +1,12 @@
 #include "apartment_complex.hpp"
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 ApartmentComplex::ApartmentComplex() {
     this->value = (rand() % ((this->max_value - this->min_value) / 100) * 100);
     this->mortgage_duration = ceil((float)this->value/(float)this->mortgage_amount);
@@ -15,6 +22,13 @@ ApartmentComplex::ApartmentComplex() {
     this->set_rents();
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void ApartmentComplex::update_rent() {
     int rent;
     do {
@@ -26,6 +40,13 @@ void ApartmentComplex::update_rent() {
     }
 }
 
+/*********************************************************************
+** Function: main
+** Description: Entry point for the program
+** Parameters: int argc, char** argv
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
 void ApartmentComplex::print() {
     printf("Property type: Apartment Complex\n");
 
