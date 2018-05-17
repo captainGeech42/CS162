@@ -13,6 +13,9 @@ gdb: clean debug
 run: all
 	./$(exe)
 
+valgrind: all
+	valgrind --leak-check=full ./$(exe)
+
 $(exe): apartment_complex.o business_complex.o business.o citizen.o driver.o game_manager.o helper.o house.o property.o tenant.o
 	$(CC) $(C_FLAGS) -o $(exe) apartment_complex.o business_complex.o business.o citizen.o driver.o game_manager.o helper.o house.o property.o tenant.o
 

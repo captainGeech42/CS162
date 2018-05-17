@@ -14,8 +14,8 @@
 
 class GameManager {
 private:
-    List<Property> available_properties;
-    List<Property> owned_properties;
+    List<Property*> available_properties;
+    List<Property*> owned_properties;
 
     int bank_account, months;
 
@@ -36,6 +36,7 @@ public:
 
     GameManager();
     GameManager(const GameManager&);
+    ~GameManager();
 
     const GameManager& operator=(const GameManager&);
 
@@ -52,6 +53,7 @@ public:
     void sell_property();
     void event();
     void update_rent();
+    void print_status();
 };
 
 #endif

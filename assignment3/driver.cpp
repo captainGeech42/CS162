@@ -21,6 +21,7 @@ int main() {
             state = GameManager::kDebts;
             break;
         case GameManager::kDebts:
+            gm.print_status();
             gm.pay_debts();
             state = GameManager::kTaxes;
             break;
@@ -52,6 +53,11 @@ int main() {
     }
 
     // game over
+    if (gm.get_bank_account() < 1) {
+        printf("You lose!\n");
+    } else {
+        printf("You win!\n");
+    }
 
     return 0;
 }

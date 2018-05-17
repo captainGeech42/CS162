@@ -19,6 +19,8 @@ private:
     static const int min_value = 400000;
     static const int max_tenants = 5;
 
+    void set_rents();
+
 public:
     BusinessComplex();
 

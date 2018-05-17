@@ -11,6 +11,15 @@ GameManager::GameManager(const GameManager& rhs) {
     this->bank_account = rhs.bank_account;
 }
 
+GameManager::~GameManager() {
+    for (int i = 0; i < this->available_properties.get_size(); i++) {
+        delete this->available_properties[i];
+    }
+    for (int i = 0; i < this->owned_properties.get_size(); i++) {
+        delete this->owned_properties[i];
+    }
+}
+
 const GameManager& GameManager::operator=(const GameManager& rhs) {
     this->available_properties = rhs.available_properties;
     this->owned_properties = rhs.owned_properties;
@@ -27,26 +36,31 @@ bool GameManager::is_game_over() {
 
 void GameManager::generate_properties() {
     for (int i = 0; i < 3; i++) {
-        House h;
-        ApartmentComplex a;
-        BusinessComplex b;
+        Property *p;
 
-        this->available_properties.push_back(h);
-        this->available_properties.push_back(a);
-        this->available_properties.push_back(b);
+        p = new House;
+        this->available_properties.push_back(p);
+        
+        p = new ApartmentComplex;
+        this->available_properties.push_back(p);
+        
+        p = new BusinessComplex;
+        this->available_properties.push_back(p);
     }
 }
 
 void GameManager::pay_debts() {
     for (int i = 0; i < this->owned_properties.get_size(); i++) {
-        this->bank_account -= this->owned_properties[i].pay_mortgage();
+        this->bank_account -= this->owned_properties[i]->pay_mortgage();
     }
 }
 
 void GameManager::pay_taxes() {
-    if (this->months % 12 == 0) {
+    if (this->months % 12 == 0 && this->months != 0) {
+        printf("It's your favorite month of the year! Time to pay taxes!\n");
+
         for (int i = 0; i < this->owned_properties.get_size(); i++) {
-            this->bank_account -= this->owned_properties[i].get_value() * PROPERTY_TAX;
+            this->bank_account -= this->owned_properties[i]->get_value() * PROPERTY_TAX;
         }
     }
     this->months++;
@@ -54,13 +68,13 @@ void GameManager::pay_taxes() {
 
 void GameManager::collect_rent() {
     for (int i = 0; i < this->owned_properties.get_size(); i++) {
-        this->bank_account += this->owned_properties[i].collect_rent();
+        this->bank_account += this->owned_properties[i]->collect_rent();
     }
 }
 
 void GameManager::update_properties() {
-    for (int i = 0; i < this->owned_properties.get_max_size(); i++) {
-        this->owned_properties[i].update_tenants();
+    for (int i = 0; i < this->owned_properties.get_size(); i++) {
+        this->owned_properties[i]->update_tenants();
     }
 }
 
@@ -80,18 +94,18 @@ void GameManager::buy_property() {
         } while (one == three && two == three);
 
         printf("Property #1:\n");
-        this->available_properties[one].print();
+        this->available_properties[one]->print();
         printf("Property #2:\n");
-        this->available_properties[two].print();
+        this->available_properties[two]->print();
         printf("Property #3:\n");
-        this->available_properties[three].print();
+        this->available_properties[three]->print();
 
         int val;
         do {
             val = get_int("Which property would you like to buy? 1, 2, or 3? ");
         } while (val < 1 || val > 3);
 
-        Property prop;
+        Property *prop;
         switch (val) {
             case 1:
                 prop = this->available_properties[one];
@@ -124,11 +138,11 @@ void GameManager::sell_property() {
         switch (rand() % 3) {
             case 0:
                 printf("You received 90%% of the property value.\n");
-                this->bank_account += 0.9 * this->owned_properties[index].get_value();
+                this->bank_account += 0.9 * this->owned_properties[index]->get_value();
                 break;
             case 1:
                 printf("You received 100%% of the property value.\n");
-                this->bank_account += this->owned_properties[index].get_value();
+                this->bank_account += this->owned_properties[index]->get_value();
                 break;
             case 2:
                 printf("You received your asking price.\n");
@@ -196,17 +210,17 @@ void GameManager::event() {
 
     if (event != kGentrification) {
         for (int i = 0; i < this->owned_properties.get_size(); i++) {
-            this->owned_properties[i].do_event(event);
+            this->owned_properties[i]->do_event(event);
         }
         for (int i = 0; i < this->available_properties.get_size(); i++) {
-            this->available_properties[i].do_event(event);
+            this->available_properties[i]->do_event(event);
         }
     } else {
         for (int i = 0; i < this->owned_properties.get_size(); i++) {
-            this->owned_properties[i].do_gentrification(location);
+            this->owned_properties[i]->do_gentrification(location);
         }
         for (int i = 0; i < this->available_properties.get_size(); i++) {
-            this->available_properties[i].do_gentrification(location);
+            this->available_properties[i]->do_gentrification(location);
         }
     }
 }
@@ -220,13 +234,26 @@ void GameManager::update_rent() {
             val = get_int("Please select the property you would like to update the rent on");
         } while (val < 0 || val >= this->owned_properties.get_size());
 
-        this->owned_properties[val].update_rent();
+        this->owned_properties[val]->update_rent();
     }
 }
 
 void GameManager::print_owned() {
     for (int i = 0; i < this->owned_properties.get_size(); i++) {
         printf("Property #%d\n", i+1);
-        this->owned_properties[i].print();
+        this->owned_properties[i]->print();
     }
+}
+
+void GameManager::print_status() {
+    printf("Current Bank Account: %d\n", this->bank_account);
+    printf("Number of Properties: %d\n", this->owned_properties.get_size());
+
+    int debt = 0, rent = 0;
+    for (int i = 0; i < this->owned_properties.get_size(); i++) {
+        rent += this->owned_properties[i]->get_total_rent();
+        debt += this->owned_properties[i]->get_mortgage();
+    }
+    printf("Total Income: %d\n", rent);
+    printf("Total Mortgage Payment: %d\n", debt);
 }

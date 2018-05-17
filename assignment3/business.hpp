@@ -11,14 +11,14 @@ public:
         kLarge
     };
 
+    const static int min_budget = 2000;
+    const static int max_budget = 10000;
+
     Business();
 
 private:
     int rent;
     Size size;
-
-    const static int min_budget = 2000;
-    const static int max_budget = 10000;
 };
 
 #endif
