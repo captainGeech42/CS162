@@ -1,0 +1,4 @@
+Thanks to ncurses, this program "leaks" about 330k of memory.
+
+Actually, that is all due to ncurses, and how it manages it's memory. Valgrind isn't as smart as ncurses.
+https://stackoverflow.com/a/32411962/1940194
