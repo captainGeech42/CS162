@@ -1,5 +1,5 @@
-#ifndef THROWER
-#define THROWER
+#ifndef THROWER_HPP_HPP
+#define THROWER_HPP_HPP
 
 #include "../ant.hpp"
 #include "../bee.hpp"

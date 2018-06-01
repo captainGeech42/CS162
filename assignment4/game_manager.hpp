@@ -21,6 +21,10 @@ private:
     void add_bee();
     void add_ant();
     bool can_place(int, Ant::Type);
+    void ant_attack();
+    void remove_dead_ants();
+    void remove_dead_bees();
+    void bee_attack();
 
 public:
     enum State {

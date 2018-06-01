@@ -1,5 +1,5 @@
-#ifndef LONGTHROWER
-#define LONGTHROWER
+#ifndef LONGTHROWER_HPP_HPP
+#define LONGTHROWER_HPP_HPP
 
 #include "../ant.hpp"
 #include "../bee.hpp"

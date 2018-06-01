@@ -1,5 +1,5 @@
-#ifndef SHORTTHROWER
-#define SHORTTHROWER
+#ifndef SHORTTHROWER_HPP_HPP
+#define SHORTTHROWER_HPP_HPP
 
 #include "../ant.hpp"
 #include "../bee.hpp"

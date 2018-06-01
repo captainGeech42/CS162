@@ -1,5 +1,5 @@
-#ifndef FIRE
-#define FIRE
+#ifndef FIRE_HPP_HPP
+#define FIRE_HPP_HPP
 
 #include "../ant.hpp"
 #include "../bee.hpp"

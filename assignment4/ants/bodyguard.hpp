@@ -1,5 +1,5 @@
-#ifndef BODYGUARD
-#define BODYGUARD
+#ifndef BODYGUARD_HPP_HPP
+#define BODYGUARD_HPP_HPP
 
 #include "../ant.hpp"
 #include "../entity.hpp"

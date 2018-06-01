@@ -8,7 +8,7 @@ debug: C_FLAGS += -g -D DEBUG
 debug: all
 
 gdb: clean debug
-	gdb $(exe)
+	gdb --quiet $(exe)
 
 run: all
 	./$(exe)
@@ -16,8 +16,8 @@ run: all
 valgrind: all
 	valgrind --leak-check=full ./$(exe)
 
-$(exe): ant.o bee.o driver.o entity.o game_manager.o ui_manager.o thrower.o fire.o longthrower.o shortthrower.o wall.o ninja.o bodyguard.o
-	$(CC) $(C_FLAGS) -o $(exe) ant.o bee.o driver.o entity.o game_manager.o ui_manager.o thrower.o fire.o longthrower.o shortthrower.o wall.o ninja.o bodyguard.o 
+$(exe): ant.o bee.o driver.o entity.o game_manager.o helper.o ui_manager.o harvester.o thrower.o fire.o longthrower.o shortthrower.o wall.o ninja.o bodyguard.o
+	$(CC) $(C_FLAGS) -o $(exe) helper.o ant.o bee.o driver.o entity.o game_manager.o ui_manager.o harvester.o thrower.o fire.o longthrower.o shortthrower.o wall.o ninja.o bodyguard.o 
 
 ant.o: ant.cpp ant.hpp
 	$(CC) $(C_FLAGS) -c ant.cpp
@@ -31,11 +31,17 @@ driver.o: driver.cpp
 entity.o: entity.cpp entity.hpp
 	$(CC) $(C_FLAGS) -c entity.cpp
 
-game_manager.o: game_manager.cpp game_manager.hpp
+game_manager.o: game_manager.cpp game_manager.hpp helper.o
 	$(CC) $(C_FLAGS) -c game_manager.cpp
+
+helper.o: helper.cpp helper.hpp
+	$(CC) $(C_FLAGS) -c helper.cpp
 
 ui_manager.o: ui_manager.cpp ui_manager.hpp
 	$(CC) $(C_FLAGS) -c ui_manager.cpp
+
+harvester.o: ants/harvester.cpp ants/harvester.hpp
+	$(CC) $(C_FLAGS) -c ants/harvester.cpp
 
 thrower.o: ants/thrower.cpp ants/thrower.hpp
 	$(CC) $(C_FLAGS) -c ants/thrower.cpp
@@ -59,7 +65,7 @@ bodyguard.o: ants/bodyguard.cpp ants/bodyguard.hpp
 	$(CC) $(C_FLAGS) -c ants/bodyguard.cpp
 
 clean:
-	$(RM) *.o *.out $(exe) *.gch peda*
+	$(RM) *.o *.out $(exe) *.gch peda* *core*
 
 compress:
 	tar zcvf assign4.tar.gz Makefile *.?pp

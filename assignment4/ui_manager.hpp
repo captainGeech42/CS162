@@ -8,18 +8,23 @@
 #include "ant.hpp"
 #include "bee.hpp"
 #include "board.hpp"
+#include "entity.hpp"
 
 class UIManager {
 private:
-    Board b;
+    enum Color {
+	GREEN=92,
+	YELLOW=93,
+	RED=91,
+	BKGD=40 // black
+    };
 
-    int get_max_height();
+    int get_max_height(Board&);
+    void set_color(Entity*);
+    void reset_color();
 
 public:
-    UIManager() {}
-    UIManager(Board&);
-
-    void print();
+    void print(Board&);
 };
 
 #endif

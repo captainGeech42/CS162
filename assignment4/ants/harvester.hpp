@@ -1,5 +1,5 @@
-#ifndef HARVESTER
-#define HARVESTER
+#ifndef HARVESTER_HPP
+#define HARVESTER_HPP
 
 #include "../ant.hpp"
 #include "../entity.hpp"

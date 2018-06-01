@@ -1,5 +1,5 @@
-#ifndef NINJA
-#define NINJA
+#ifndef NINJA_HPP_HPP
+#define NINJA_HPP_HPP
 
 #include "../ant.hpp"
 #include "../bee.hpp"

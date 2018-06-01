@@ -1,9 +1,9 @@
 #include "wall.hpp"
 
 Wall::Wall() {
-    this->symbol = '%';
-    this->armor = 42;
-    this->food = 69;
+    this->symbol = 'W';
+    this->armor = 4;
+    this->food = 4;
 }
 
 void Wall::action(Board& b) {
