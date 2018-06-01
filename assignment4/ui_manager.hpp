@@ -1,32 +1,25 @@
 #ifndef UI_MANAGER
 #define UI_MANAGER
 
-#include <ncurses.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+
+#include "ant.hpp"
+#include "bee.hpp"
+#include "board.hpp"
 
 class UIManager {
 private:
-    struct Window {
-	WINDOW* w;
-	int x;
-	int y;
-	int width;
-	int height;
-    };
+    Board b;
 
-    Window board;
-    Window menu; //this may change, need to read Menu ncurses documentation
-   
-    void construct_window(Window);
-
-    void init_board();
-    void init_menu();
+    int get_max_height();
 
 public:
-    UIManager();
-    UIManager(const UIManager&);
-    ~UIManager();
+    UIManager() {}
+    UIManager(Board&);
 
-    
+    void print();
 };
 
 #endif

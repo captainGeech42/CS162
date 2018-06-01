@@ -1,9 +1,11 @@
-#include <ncurses.h>
-
-#include "ui_manager.hpp"
+#include "game_manager.hpp"
 
 int main() {
-    UIManager ui;
+    GameManager gm;
+    GameManager::State state;
 
-    getch();
+    do {
+        gm.next_turn();
+    } while ((state = gm.get_state()) == GameManager::RUNNING);
+
 }
