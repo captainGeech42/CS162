@@ -34,6 +34,7 @@ public:
     };
 
     GameManager();
+    ~GameManager();
 
     State get_state();
     void next_turn();

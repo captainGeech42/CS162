@@ -4,6 +4,15 @@ GameManager::GameManager() {
     this->b.food = 50;
 }
 
+GameManager::~GameManager() {
+    for (int i = 0; i < BOARD_SIZE; i++) {
+	for (unsigned int j = 0; j < this->b.b[i].size(); j++) {
+	    delete this->b.b[i][j];
+	}
+	this->b.b[i].clear();
+    }
+}
+
 void GameManager::add_bee() {
     this->b.b[BOARD_SIZE - 1].push_back(new Bee);
 }

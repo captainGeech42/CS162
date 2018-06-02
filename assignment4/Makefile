@@ -68,4 +68,4 @@ clean:
 	$(RM) *.o *.out $(exe) *.gch peda* *core*
 
 compress:
-	tar zcvf assign4.tar.gz Makefile *.?pp
+	tar zcvf assign4.tar.gz Makefile *.?pp ants/
