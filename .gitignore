@@ -4,3 +4,4 @@ peda*
 *.o
 *.gch
 **/test
+*swp

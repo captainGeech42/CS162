@@ -55,6 +55,9 @@ void UIManager::print(Board& board) {
 	}
     }
     printf("\n");
+
+    // print legend
+    printf("\033[%2$d;%1$dm1 Armor\033[0m\t\t\033[%3$d;%1$dm2 Armor\033[0m\t\t\033[%4$d;%1$dm3+ Armor\033[0m\n\n", BKGD, RED, YELLOW, GREEN);
 }
 
 int UIManager::get_max_height(Board& board) {
