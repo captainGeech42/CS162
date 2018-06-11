@@ -22,7 +22,7 @@ int main (){
         print(head, length(head));
         printf("Do you want to do this again (y or n)? ");
         scanf("%1s",ans);
-        if(ans[0] == 'y')
+        
         head = clear(head);
     } while(ans[0] == 'y');
     return 0;
