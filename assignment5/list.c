@@ -10,12 +10,12 @@ int length(struct node* n) {
     return length;
 }
 
-void print(struct node* n, int length) {
-    if (length > length(n)) return;
+void print(struct node* n, int l) {
+    if (l > length(n)) return;
     
     int i;
     struct node* current = n;
-    for (i = 0; i < length; i++) {
+    for (i = 0; i < l; i++) {
         printf("%d ", current->val);
         current = current->next;
     }
@@ -81,7 +81,7 @@ int is_sorted_d(struct node* head) {
 struct node* swap_nodes(struct node* head, struct node** left, struct node** right) {
     if (head == left) {
 	left->next = right->next;
-	
+    
     }
 }
 
