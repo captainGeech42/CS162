@@ -252,7 +252,7 @@ std::string to_lower(std::string sentence) {
 ** Pre-Conditions: The prompt for the user
 ** Post-Conditions: returns an int
 *********************************************************************/
-int get_int(std::string prompt, bool empty) {
+int get_int(std::string prompt) {
 	bool valid_in = true;
 	std::string in;
 	do {
@@ -264,9 +264,7 @@ int get_int(std::string prompt, bool empty) {
 		std::getline(std::cin, in);
 
 		valid_in = is_int(in);
-	} while (!valid_in && in.length() > 0);
-	
-	if (in.length() == 0) return -9999;
+	} while (!valid_in);
 
 	//if we get to here, we have a valid int
 	int newint = 0;
